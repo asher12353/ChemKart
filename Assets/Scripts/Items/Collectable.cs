@@ -4,20 +4,32 @@ using UnityEngine;
 
 namespace ChemKart
 {
-    [RequireComponent(typeof(Collider))]
     public class Collectable : MonoBehaviour
     {
+        [Header("Components")]
+        [SerializeField] private Collider m_Collider;
+        
+        [Header("Collectable")]
+        [SerializeField] private Sprite m_InventoryIcon;
         [SerializeField] private float m_RespawnTime = 10f;
-        [SerializeField] private Sprite m_Icon;
         
-        private Collider m_Collider;
-        
-        public Sprite Icon => m_Icon;
+        public Sprite InventoryIcon => m_InventoryIcon;
         
         private void Awake()
         {
-            m_Collider = GetComponent<Collider>();
-            m_Collider.isTrigger = true;
+            if (m_Collider)
+            {
+                m_Collider.isTrigger = true;
+            }
+            else
+            {
+                Debug.LogWarning($"{name}: Collectable collider is not set.");
+            }
+
+            if (!m_InventoryIcon)
+            {
+                Debug.LogWarning($"{name}: Collectable inventory icon is not set.");
+            }
         }
         
         private void OnTriggerEnter(Collider other)

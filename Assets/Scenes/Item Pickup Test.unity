@@ -507,6 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0d286fa96af6047b9fa699fb02172a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Owner: {fileID: 311055016}
   m_Items: []
 --- !u!114 &311055016
 MonoBehaviour:
@@ -520,6 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1f2fb47699f9f4e8f43240809739ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_PlayerHUD: {fileID: 566426904}
 --- !u!1 &327596436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,8 +1410,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ed6d974dc5c624b9b51df0c07ece15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Collider: {fileID: 1313845993}
+  m_InventoryIcon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_RespawnTime: 10
-  m_Icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!135 &1313845993
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1655,8 +1658,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ed6d974dc5c624b9b51df0c07ece15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Collider: {fileID: 1812900341}
+  m_InventoryIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   m_RespawnTime: 10
-  m_Icon: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!65 &1812900341
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1778,8 +1782,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ed6d974dc5c624b9b51df0c07ece15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Collider: {fileID: 1916064514}
+  m_InventoryIcon: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
   m_RespawnTime: 10
-  m_Icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!136 &1916064514
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,13 +6,14 @@ namespace ChemKart
 {
     public class PlayerHUD : MonoBehaviour
     {
+        [Header("Inventory")]
         [SerializeField] private List<Image> m_ItemSlots = new();
-
+        
         private void Awake()
         {
             if (m_ItemSlots.Count != Inventory.MaxItems)
             {
-                Debug.LogWarning($"{name}: Item slots count does not match inventory max items ({Inventory.MaxItems}).");
+                Debug.LogWarning($"{name}: Player HUD item slots count does not match inventory max items ({Inventory.MaxItems}).");
             }
         }
         

@@ -7,14 +7,18 @@ namespace ChemKart
     {
         public const int MaxItems = 3;
         
-        private Character m_Owner;
+        [Header("Character")]
+        [SerializeField] private Character m_Owner;
         
-        [SerializeField]
-        private List<Collectable> m_Items = new();
+        [Header("Inventory")]
+        [SerializeField] private List<Collectable> m_Items = new();
         
         private void Awake()
         {
-            m_Owner = GetComponent<Character>();
+            if (!m_Owner)
+            {
+                Debug.LogWarning($"{name}: Inventory owner is not set.");
+            }
         }
         
         /// <summary>
@@ -34,7 +38,7 @@ namespace ChemKart
             
             if (m_Owner is Player { PlayerHUD: not null } player)
             {
-                player.PlayerHUD.AddItemAtIndex(m_Items.Count - 1, item.Icon);
+                player.PlayerHUD.AddItemAtIndex(m_Items.Count - 1, item.InventoryIcon);
             }
             
             return true;

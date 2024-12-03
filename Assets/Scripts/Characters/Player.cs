@@ -4,11 +4,17 @@ namespace ChemKart
 {
     public class Player : Character
     {
-        public PlayerHUD PlayerHUD { get; private set; }
+        [Header("UI")]
+        [SerializeField] private PlayerHUD m_PlayerHUD;
+        
+        public PlayerHUD PlayerHUD => m_PlayerHUD;
         
         private void Awake()
         {
-            PlayerHUD = GetComponentInChildren<PlayerHUD>();
+            if (!m_PlayerHUD)
+            {
+                Debug.LogWarning($"{name}: Player HUD is not set.");
+            }
         }
     }
 }
