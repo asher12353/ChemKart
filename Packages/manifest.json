@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+    "com.justgif.utils": "https://github.com/justgif/Unity-Utils.git",
     "com.unity.ai.navigation": "2.0.4",
     "com.unity.cinemachine": "3.1.2",
     "com.unity.collab-proxy": "2.6.0",
