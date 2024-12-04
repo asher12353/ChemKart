@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 
 public class DrivingPhysics : MonoBehaviour
 {
-    public InputActionReference move;
     public float accelerationSpeed = 1.0f;
     public float rotationSpeed = 1.0f;
     public float defaultDrag = 1.0f;
@@ -18,14 +17,16 @@ public class DrivingPhysics : MonoBehaviour
     private float driftDirection;
     private bool drifting;
     private Rigidbody rb;
-    private Vector3 movementDirection;
+    private Transform sphere;
     private Transform model;
     Vector2 input;
 
     void Start()
     {
-       rb = GetComponent<Rigidbody>();
-       model = transform.parent.GetChild(1);
+        // grabs the needed components
+        sphere = transform.GetChild(0);
+        rb = sphere.GetComponent<Rigidbody>();
+        model = transform.GetChild(1); // this could be better updated to grab the right model but I'm unsure of a way to do so yet
     }
 
     void Update()
@@ -41,6 +42,7 @@ public class DrivingPhysics : MonoBehaviour
 
         currentSpeed = Mathf.SmoothStep(currentSpeed, speed, Time.deltaTime * 12f);
         currentRotation = Mathf.Lerp(currentRotation, rotation, Time.deltaTime * 4f);
+
         if(Mathf.Abs(currentSpeed) < speedThresholdToStop && currentSpeed != 0)
         {
             currentSpeed = 0;
@@ -57,6 +59,9 @@ public class DrivingPhysics : MonoBehaviour
             Debug.Log("currentRotation:" + currentRotation);
             Debug.Log("drifting:" + drifting);
             Debug.Log("driftDirection:" + driftDirection);
+            Debug.Log("sphere:" + sphere);
+            Debug.Log("rb:" + rb);
+            Debug.Log("model:" + model);
         }
     }
 
@@ -92,13 +97,14 @@ public class DrivingPhysics : MonoBehaviour
 
     public void DriftEvent(InputAction.CallbackContext context)
     {
-        drifting = context.performed;
-        if(drifting)
+        if(context.performed)
         {
+            drifting = true;
             driftDirection = input.x > 0 ? 1 : -1;
         }
         else
         {
+            drifting = false;
             driftDirection = 0;
         }
     }
