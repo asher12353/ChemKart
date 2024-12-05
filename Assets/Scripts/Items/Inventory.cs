@@ -38,6 +38,7 @@ namespace ChemKart
             
             m_Items.Add(item);
             InventoryChanged?.Invoke();
+
             Debug.Log($"{name}: Added {item.name} to {m_Owner.name}'s inventory.");
             
             if (m_Owner is Player { PlayerHUD: not null } player)
@@ -47,5 +48,7 @@ namespace ChemKart
             
             return true;
         }
+
+        public List<Collectable> M_Items() { return m_Items; }
     }
 }

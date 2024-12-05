@@ -2,15 +2,10 @@ using UnityEngine;
 
 namespace ChemKart
 {
-    public class Powerup : MonoBehaviour
+    public abstract class Powerup : MonoBehaviour
     {
-        protected string recipe;
+        public string recipeString;
 
-        public void Effect()
-        {
-
-        }
-
-        public string Recipe() { return recipe; }
+        public abstract void Effect();
     }
 }

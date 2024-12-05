@@ -4,12 +4,12 @@ namespace ChemKart
 {
     public class SpeedBoost : Powerup
     {
-        public void Awake()
+        public SpeedBoost()
         {
-            recipe = "BB";
+            recipeString = "BB";
         }
 
-        public new void Effect()
+        public override void Effect()
         {
 
         }
