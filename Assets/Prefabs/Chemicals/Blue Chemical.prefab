@@ -121,4 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1857e529ca9cbc4687e8f47dd93f15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Collider: {fileID: 2111964139883487728}
+  m_InventoryIcon: {fileID: 0}
+  m_RespawnTime: 10
   chemicalValue: B

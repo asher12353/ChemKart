@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace ChemKart
 {
     public class Inventory : MonoBehaviour
     {
         public const int MaxItems = 3;
+        
+        public event Action InventoryChanged;
         
         [Header("Character")]
         [SerializeField] private Character m_Owner;
@@ -34,6 +37,7 @@ namespace ChemKart
             }
             
             m_Items.Add(item);
+            InventoryChanged?.Invoke();
             Debug.Log($"{name}: Added {item.name} to {m_Owner.name}'s inventory.");
             
             if (m_Owner is Player { PlayerHUD: not null } player)
