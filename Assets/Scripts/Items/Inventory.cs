@@ -49,6 +49,17 @@ namespace ChemKart
             return true;
         }
 
+        public bool RemoveItem(Collectable item)
+        {
+            if(item == null || !m_Items.Contains(item))
+            {
+                return false;
+            }
+            m_Items.Remove(item);
+            InventoryChanged?.Invoke();
+            return true;
+        }
+
         public List<Collectable> M_Items() { return m_Items; }
     }
 }

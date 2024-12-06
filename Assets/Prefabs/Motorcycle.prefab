@@ -286,7 +286,6 @@ GameObject:
   - component: {fileID: 6950750823685586026}
   - component: {fileID: 9153315787835088802}
   - component: {fileID: 4963899484156641481}
-  - component: {fileID: 1240372941296776128}
   m_Layer: 0
   m_Name: Motorcycle
   m_TagString: Untagged
@@ -470,6 +469,7 @@ MonoBehaviour:
   defaultDrag: 1.6
   brakingDrag: 100
   debug: 0
+  currentSpeed: 0
 --- !u!114 &9153315787835088802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,6 +484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipes:
   - {fileID: 6554058058789058404, guid: 392e611034cf5cd4d9583cd325a6f937, type: 3}
+  maxPowerups: 2
 --- !u!114 &4963899484156641481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,20 +498,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlayerHUD: {fileID: 0}
---- !u!114 &1240372941296776128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8544877664736114457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e0d286fa96af6047b9fa699fb02172a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Owner: {fileID: 4963899484156641481}
-  m_Items: []
 --- !u!1001 &8053676907544449616
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,8 +8,9 @@ public class DrivingPhysics : MonoBehaviour
     public float defaultDrag = 1.0f;
     public float brakingDrag = 2.0f;
     public bool debug;
+    
+    public float currentSpeed;
     private float speed;
-    private float currentSpeed;
     private float rotation;
     private float currentRotation;
     private float speedThresholdToStop = 0.001f;
@@ -27,6 +28,7 @@ public class DrivingPhysics : MonoBehaviour
         sphere = transform.GetChild(0);
         rb = sphere.GetComponent<Rigidbody>();
         model = transform.GetChild(1); // this could be better updated to grab the right model but I'm unsure of a way to do so yet
+        SetDrag(defaultDrag);
     }
 
     void Update()
@@ -87,11 +89,11 @@ public class DrivingPhysics : MonoBehaviour
     {
         if(context.performed)
         {
-            rb.linearDamping = brakingDrag;
+            SetDrag(brakingDrag);
         }
         else
         {
-            rb.linearDamping = defaultDrag;
+            SetDrag(defaultDrag);
         }
     }
 
@@ -112,5 +114,11 @@ public class DrivingPhysics : MonoBehaviour
     void Steer(float direction, float amount)
     {
         rotation = (rotationSpeed * direction) * amount;
+    }
+
+    void SetDrag(float dragVal)
+    {
+        rb.linearDamping = dragVal;
+        rb.angularDamping = dragVal * 0.1f;
     }
 }

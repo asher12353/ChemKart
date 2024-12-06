@@ -6,6 +6,6 @@ namespace ChemKart
     {
         public string recipeString;
 
-        public abstract void Effect();
+        public abstract void Effect(GameObject vehicle);
     }
 }
