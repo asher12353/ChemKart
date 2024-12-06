@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cysharp.Threading.Tasks;
+using System;
 
 public class DrivingPhysics : MonoBehaviour
 {
@@ -7,7 +9,9 @@ public class DrivingPhysics : MonoBehaviour
     public float rotationSpeed = 1.0f;
     public float defaultDrag = 1.0f;
     public float brakingDrag = 2.0f;
+    public float respawnTime = 3.0f;
     public bool debug;
+    public bool shielded;
     
     public float currentSpeed;
     private float speed;
@@ -17,6 +21,7 @@ public class DrivingPhysics : MonoBehaviour
     private float rotationThresholdToStop = 0.001f;
     private float driftDirection;
     private bool drifting;
+    private bool damaged;
     private Rigidbody rb;
     private Transform sphere;
     private Transform model;
@@ -33,7 +38,14 @@ public class DrivingPhysics : MonoBehaviour
 
     void Update()
     {
-        speed = input.y * accelerationSpeed;
+        if(!damaged)
+        {
+            speed = input.y * accelerationSpeed;
+        }
+        else
+        {
+            speed = 0;
+        }
         Steer(input.x, 1);
 
         if(drifting)
@@ -120,5 +132,20 @@ public class DrivingPhysics : MonoBehaviour
     {
         rb.linearDamping = dragVal;
         rb.angularDamping = dragVal * 0.1f;
+    }
+
+    public async void Damage()
+    {
+        if(shielded)
+        {
+            Debug.Log("Prevented damage");
+            shielded = false;
+            return;
+        }
+        currentSpeed = 0;
+        damaged = true;
+        await UniTask.Delay(TimeSpan.FromSeconds(respawnTime));
+        damaged = false;
+        Debug.Log("Damaged");
     }
 }
