@@ -55,8 +55,16 @@ namespace ChemKart
             {
                 return false;
             }
+
+            if (m_Owner is Player { PlayerHUD: not null } player)
+            {
+                player.PlayerHUD.RemoveItemAtIndex(m_Items.IndexOf(item));
+            }
+
             m_Items.Remove(item);
             InventoryChanged?.Invoke();
+
+
             return true;
         }
 

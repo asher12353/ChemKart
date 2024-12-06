@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipeString: BB
+  powerupSprite: {fileID: 21300000, guid: 86dc7a87f2017014b86a6db3f67c886b, type: 3}
   boostMagnitude: 4
