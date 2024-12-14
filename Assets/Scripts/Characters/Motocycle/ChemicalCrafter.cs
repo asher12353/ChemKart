@@ -31,13 +31,19 @@ namespace ChemKart
                 {
                     powerup1.Effect(this.gameObject);
                     powerup1 = null;
-                    playerHUD.RemoveItemAtIndexWithoutShifting(0);
+                    if(playerHUD)
+                    {
+                        playerHUD.RemoveItemAtIndexWithoutShifting(0);
+                    }
                 }
                 if(powerup2 && keyValue == 1f)
                 {
                     powerup2.Effect(this.gameObject);
                     powerup2 = null;
-                    playerHUD.RemoveItemAtIndexWithoutShifting(1);
+                    if(playerHUD)
+                    {
+                        playerHUD.RemoveItemAtIndexWithoutShifting(1);
+                    }
                 }
             }
         }
