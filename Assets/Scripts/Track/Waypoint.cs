@@ -1,11 +1,13 @@
 using UnityEngine;
+using System;
 
 namespace ChemKart
 {
     public class Waypoint : MonoBehaviour
     {
-        public int m_WaypointIndex;
-        public Waypoint m_NextWaypoint;
+        public int waypointIndex;
+        public Waypoint nextWaypoint;
+        public event Action<Collider> OnTriggerEnterEvent;
         
         public void OnTriggerEnter(Collider other)
         {
@@ -15,7 +17,7 @@ namespace ChemKart
                 return;
             }
             driver.SetWaypoint(this);
-            //Debug.Log(m_WaypointIndex);
+            OnTriggerEnterEvent?.Invoke(other);
         }
     }
 }
