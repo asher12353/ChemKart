@@ -122,6 +122,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Collider: {fileID: 6923802566207152097}
-  m_InventoryIcon: {fileID: 0}
+  m_InventoryIcon: {fileID: 21300000, guid: a3c00e4d7eaf3a54899b6c1ba425a94d, type: 3}
   m_RespawnTime: 10
   chemicalValue: R
