@@ -197,6 +197,54 @@ namespace ChemKart
             Debug.Log("Damaged");
         }
 
+        public void StopMovement()
+        {
+            currentSpeed = 0;
+            drifting = false;
+            driftDirection = 0;
+
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+        }
+
+        public void ResetPosition(Vector3 newPosition)
+        {
+            if (rb != null)
+            {
+                rb.isKinematic = true; // Disable physics temporarily
+            }
+
+            sphere.transform.position = newPosition;
+
+            if (rb != null)
+            {
+                rb.isKinematic = false; // Re-enable physics
+            }
+        }
+
+        public void ResetRotation(Quaternion newRotation)
+        {
+            // Stop rotation-related forces
+            if (rb != null)
+            {
+                rb.angularVelocity = Vector3.zero;
+            }
+
+            // Apply new rotation
+            model.rotation = newRotation;
+        }
+
+        public void MaintainVelocity(Vector3 forwardDirection)
+        {
+            if (rb != null)
+            {
+                rb.linearVelocity = forwardDirection * currentSpeed;
+            }
+        }
+
         public Waypoint GetWaypoint() {return mostRecentWaypoint;}
         public void SetWaypoint(Waypoint waypoint) 
         {
