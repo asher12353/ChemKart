@@ -10,9 +10,24 @@ namespace ChemKart
 
         void Awake()
         {
+            // this could probably be made to be done in editor, instead of when starting to play, but I'm unsure of how to do in engine code
+            GrabActiveAllWaypoints(tracks);
+        }
+
+        /// <summary>
+        /// Loops through the track to assign the waypoints to the m_Waypoints variable.
+        /// </summary>
+        /// <param name="track">The gameobject that holds all of the track pieces and waypoints. Should be in the format tracks->trackpieces->waypoints in terms of hierarchy.</param>
+        void GrabActiveAllWaypoints(GameObject track)
+        {
+            if(!track)
+            {
+                Debug.LogError("The track gameobject has not been set!");
+                return;
+            }
             int i = 0;
             Waypoint previousWaypoint = null;
-            foreach(Transform child in tracks.transform)
+            foreach(Transform child in track.transform)
             {
                 foreach(Transform waypointObject in child)
                 {
@@ -23,14 +38,14 @@ namespace ChemKart
                     Waypoint waypoint = waypointObject.GetComponent<Waypoint>();
                     if(i != 0)
                     {
-                        previousWaypoint.m_NextWaypoint = waypoint;
+                        previousWaypoint.nextWaypoint = waypoint;
                     }
                     previousWaypoint = waypoint;
-                    waypoint.m_WaypointIndex = i++;
+                    waypoint.waypointIndex = i++;
                     m_Waypoints.Add(waypoint);
                 }
             }
-            m_Waypoints[i - 1].m_NextWaypoint = m_Waypoints[0];
+            m_Waypoints[i - 1].nextWaypoint = m_Waypoints[0];
         }
     }
 }

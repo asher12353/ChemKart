@@ -7,8 +7,7 @@ namespace ChemKart
 {
     public class DrivingPhysics : MonoBehaviour
     {
-        [SerializeField] private NavMeshAgent navMeshAgent;
-        [SerializeField] private float m_AITurnValue = 1f;
+        public enum DrivingMode{AI, Player};
         public DrivingMode drivingMode = DrivingMode.Player;
         public float driftFactor = 0.8f;
         public float accelerationSpeed = 1.0f;
@@ -19,128 +18,133 @@ namespace ChemKart
         public bool debug;
         public bool shielded;
         public float currentSpeed;
-        public enum DrivingMode{AI, Player};
-        private float speed;
-        private float rotation;
-        private float currentRotation;
-        private float speedThresholdToStop = 0.001f;
-        private float rotationThresholdToStop = 0.001f;
-        private float driftDirection;
-        private bool drifting;
-        private bool damaged;
+        private float m_Speed;
+        private float m_Rotation;
+        private float m_CurrentRotation;
+        private float m_SpeedThresholdToStop = 0.001f;
+        private float m_RotationThresholdToStop = 0.001f;
+        private float m_InputClampThreshold = 0.1f;
+        private float m_DriftDirection;
+        private bool m_Drifting;
+        private bool m_Damaged;
         private Rigidbody rb;
-        private Transform sphere;
-        private Transform model;
-        private Waypoint mostRecentWaypoint;
-        private Vector2 input;
+        private Transform m_Sphere;
+        private Transform m_Model;
+        private Waypoint m_MostRecentWaypoint;
+        private Vector2 m_Input;
+        private long seed = DateTime.Now.Ticks;
+        private System.Random random;
+
+        public void Respawn()
+        {
+            m_Sphere.transform.position = m_MostRecentWaypoint.transform.position;
+            currentSpeed = 0;
+        }
+
+        public async void Damage()
+        {
+            if(shielded)
+            {
+                Debug.Log("Prevented damage");
+                shielded = false;
+                return;
+            }
+            currentSpeed = 0;
+            m_Damaged = true;
+            await UniTask.Delay(TimeSpan.FromSeconds(respawnTime));
+            m_Damaged = false;
+            Debug.Log("Damaged");
+        }
+        
+        public Waypoint GetWaypoint() {return m_MostRecentWaypoint;}
+        public void SetWaypoint(Waypoint waypoint) {m_MostRecentWaypoint = waypoint;}
 
         void Start()
         {
             // grabs the needed components
-            sphere = transform.GetChild(0);
-            rb = sphere.GetComponent<Rigidbody>();
-            model = transform.GetChild(1); // this could be better updated to grab the right model but I'm unsure of a way to do so yet
-            mostRecentWaypoint = WaypointManager.m_Waypoints[0];
-            //navMeshAgent.acceleration = accelerationSpeed;
-            //navMeshAgent.destination = mostRecentWaypoint.m_NextWaypoint.transform.position;
+            m_Sphere = transform.GetChild(0);
+            rb = m_Sphere.GetComponent<Rigidbody>();
+            m_Model = transform.GetChild(1); // this could be better updated to grab the right model but I'm unsure of a way to do so yet
+            m_MostRecentWaypoint = WaypointManager.m_Waypoints[0];
+            random = new System.Random((int)seed);
         }
 
         void Update()
         {
             if(drivingMode == DrivingMode.Player)
             {
-                if(!damaged)
+                if(!m_Damaged)
                 {
-                    speed = input.y * accelerationSpeed;
+                    m_Speed = m_Input.y * accelerationSpeed;
                 }
                 else
                 {
-                    speed = 0;
+                    m_Speed = 0;
                 }
-                Steer(input.x, 1);
+                Steer(m_Input.x, 1);
 
-                if(drifting)
+                if(m_Drifting)
                 {
-                    float control = (driftDirection == 1) ? Mathf.Abs(input.x + 1) : Mathf.Abs(input.x - 1);
-                    Steer(driftDirection, control * driftFactor);
+                    float control = (m_DriftDirection == 1) ? Mathf.Abs(m_Input.x + 1) : Mathf.Abs(m_Input.x - 1);
+                    Steer(m_DriftDirection, control * driftFactor);
                 }
             }
             if (drivingMode == DrivingMode.AI)
             {
-                if (!damaged)
+                if (!m_Damaged)
                 {
-                    // Get the direction to the next waypoint
-                    Vector3 targetDirection = mostRecentWaypoint.m_NextWaypoint.m_NextWaypoint.transform.position - sphere.position;
-                    targetDirection.y = 0; // Keep steering in the horizontal plane
-                    targetDirection.Normalize();
+                    float angleToTarget = AISteer();
 
-                    // Calculate the angle to the target direction
-                    Vector3 currentForward = model.forward;
-                    currentForward.y = 0; // Ensure horizontal comparison
-                    float angleToTarget = Vector3.SignedAngle(currentForward, targetDirection, Vector3.up);
-
-                    // Steer towards the target
-                    float steeringInput = Mathf.Clamp(angleToTarget / 45f, -1f, 1f); // Normalize steering input
-                    Debug.DrawLine(sphere.position, sphere.position + currentForward * 5, Color.blue);
-                    Steer(steeringInput, 1);
-
-                    // Adjust speed based on steering angle
                     if (Mathf.Abs(angleToTarget) > 45f)
                     {
                         Break();
-                        //speed = accelerationSpeed / 3; // Slow down on sharp turns
                     }
                     else
                     {
-                        speed = accelerationSpeed; // Maintain normal speed otherwise
+                        m_Speed = accelerationSpeed;
                     }
                 }
                 else
                 {
-                    speed = 0;
+                    m_Speed = 0;
                 }
             }
 
-            currentSpeed = Mathf.SmoothStep(currentSpeed, speed, Time.deltaTime * 12f);
-            currentRotation = Mathf.Lerp(currentRotation, rotation, Time.deltaTime * 4f);
+            currentSpeed = Mathf.SmoothStep(currentSpeed, m_Speed, Time.deltaTime * 12f);
+            m_CurrentRotation = Mathf.Lerp(m_CurrentRotation, m_Rotation, Time.deltaTime * 4f);
 
-            if(Mathf.Abs(currentSpeed) < speedThresholdToStop && currentSpeed != 0)
-            {
-                currentSpeed = 0;
-            }
-            if(Mathf.Abs(currentRotation) < rotationThresholdToStop && currentRotation != 0)
-            {
-                currentRotation = 0;
-            }
+            StopIfBelowTheThreshold();
+
             if(debug)
             {
-                Debug.Log("speed:" + speed);
-                Debug.Log("currentSpeed:" + currentSpeed);
-                Debug.Log("rotation:" + rotation);
-                Debug.Log("currentRotation:" + currentRotation);
-                Debug.Log("drifting:" + drifting);
-                Debug.Log("driftDirection:" + driftDirection);
-                Debug.Log("sphere:" + sphere);
-                Debug.Log("rb:" + rb);
-                Debug.Log("model:" + model);
+                PrintMembers();
             }
         }
 
         void FixedUpdate()
         {
-            rb.AddForce(model.transform.forward * currentSpeed, ForceMode.Acceleration);
-            model.transform.eulerAngles = Vector3.Lerp(model.transform.eulerAngles, new Vector3(0, model.transform.eulerAngles.y + currentRotation), Time.deltaTime * 5f);
+            rb.AddForce(m_Model.transform.forward * currentSpeed, ForceMode.Acceleration);
+            rb.AddForce(Vector3.down * 9.8f);
+            m_Model.transform.eulerAngles = Vector3.Lerp(m_Model.transform.eulerAngles, new Vector3(0, m_Model.transform.eulerAngles.y + m_CurrentRotation), Time.deltaTime * 5f);
         }
 
         public void MoveEvent(InputAction.CallbackContext context)
         {
             if(context.performed)
             {
-                input = context.ReadValue<Vector2>();
+                m_Input = context.ReadValue<Vector2>();
+                if(Mathf.Abs(m_Input.x) < m_InputClampThreshold)
+                {
+                    m_Input.x = 0;
+                }
+                if(Mathf.Abs(m_Input.y) < m_InputClampThreshold)
+                {
+                    m_Input.y = 0;
+                }
             }
             else
             {
-                input = Vector2.zero;
+                m_Input = Vector2.zero;
             }
         }
 
@@ -156,45 +160,52 @@ namespace ChemKart
         {
             if(context.performed)
             {
-                drifting = true;
-                driftDirection = input.x > 0 ? 1 : -1;
+                m_Drifting = true;
+                m_DriftDirection = m_Input.x > 0 ? 1 : -1;
             }
             else
             {
-                drifting = false;
-                driftDirection = 0;
+                m_Drifting = false;
+                m_DriftDirection = 0;
             }
         }
 
         void Steer(float direction, float amount)
         {
-            rotation = (rotationSpeed * direction) * amount;
+            m_Rotation = (rotationSpeed * direction) * amount;
+        }
+
+        float AISteer()
+        {
+            Vector3 targetDirection = m_MostRecentWaypoint.nextWaypoint.nextWaypoint.transform.position - m_Sphere.position;
+            targetDirection.y = 0; 
+            targetDirection.Normalize();
+
+            Vector3 currentForward = m_Model.forward;
+            currentForward.y = 0;
+            float angleToTarget = Vector3.SignedAngle(currentForward, targetDirection, Vector3.up);
+
+            float steeringInput = Mathf.Clamp(angleToTarget / 45f, -1f, 1f);
+            steeringInput += (float)random.NextDouble() * 0.1f; // this is to attempt to add some sort of randomness to the AI's driving
+            Steer(steeringInput, 1);
+            return angleToTarget;
         }
 
         void Break()
         {
-            rb.AddForce(-model.transform.forward * currentSpeed/2, ForceMode.Acceleration);
-        }
-        
-        public void Respawn()
-        {
-            sphere.transform.position = mostRecentWaypoint.transform.position;
-            currentSpeed = 0;
+            rb.AddForce(-m_Model.transform.forward * currentSpeed/2, ForceMode.Acceleration);
         }
 
-        public async void Damage()
+        void StopIfBelowTheThreshold()
         {
-            if(shielded)
+            if(Mathf.Abs(currentSpeed) < m_SpeedThresholdToStop && currentSpeed != 0)
             {
-                Debug.Log("Prevented damage");
-                shielded = false;
-                return;
+                currentSpeed = 0;
             }
-            currentSpeed = 0;
-            damaged = true;
-            await UniTask.Delay(TimeSpan.FromSeconds(respawnTime));
-            damaged = false;
-            Debug.Log("Damaged");
+            if(Mathf.Abs(m_CurrentRotation) < m_RotationThresholdToStop && m_CurrentRotation != 0)
+            {
+                m_CurrentRotation = 0;
+            }
         }
 
         public void StopMovement()
@@ -247,9 +258,17 @@ namespace ChemKart
 
         public Waypoint GetWaypoint() {return mostRecentWaypoint;}
         public void SetWaypoint(Waypoint waypoint) 
+        void PrintMembers()
         {
-            mostRecentWaypoint = waypoint;
-            //navMeshAgent.destination = waypoint.m_NextWaypoint.m_NextWaypoint.transform.position;
+            Debug.Log("speed:" + m_Speed);
+            Debug.Log("currentSpeed:" + currentSpeed);
+            Debug.Log("rotation:" + m_Rotation);
+            Debug.Log("currentRotation:" + m_CurrentRotation);
+            Debug.Log("drifting:" + m_Drifting);
+            Debug.Log("driftDirection:" + m_DriftDirection);
+            Debug.Log("sphere:" + m_Sphere);
+            Debug.Log("rb:" + rb);
+            Debug.Log("model:" + m_Model);
         }
     }
 }

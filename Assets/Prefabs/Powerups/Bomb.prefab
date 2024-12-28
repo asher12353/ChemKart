@@ -121,5 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41b011d01ab3b842b0f14d95407e19f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FuseTimer: 3
+  m_FuseTimer: 1
   m_ExplosionSphere: {fileID: 451550574065728804, guid: 698dc4b83b8a50549bf95e75be948d0c, type: 3}
