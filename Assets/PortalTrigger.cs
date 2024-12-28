@@ -46,6 +46,7 @@ namespace ChemKart
                         {
                             ActivatePortals();
                             inventory.RemoveItem(item);
+                            return;
                         }
                     }
 

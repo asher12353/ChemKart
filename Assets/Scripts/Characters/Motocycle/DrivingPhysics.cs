@@ -211,8 +211,8 @@ namespace ChemKart
         public void StopMovement()
         {
             currentSpeed = 0;
-            drifting = false;
-            driftDirection = 0;
+            m_Drifting = false;
+            m_DriftDirection = 0;
 
             if (rb != null)
             {
@@ -228,7 +228,7 @@ namespace ChemKart
                 rb.isKinematic = true; // Disable physics temporarily
             }
 
-            sphere.transform.position = newPosition;
+            m_Sphere.transform.position = newPosition;
 
             if (rb != null)
             {
@@ -245,7 +245,7 @@ namespace ChemKart
             }
 
             // Apply new rotation
-            model.rotation = newRotation;
+            m_Model.rotation = newRotation;
         }
 
         public void MaintainVelocity(Vector3 forwardDirection)
@@ -256,8 +256,6 @@ namespace ChemKart
             }
         }
 
-        public Waypoint GetWaypoint() {return mostRecentWaypoint;}
-        public void SetWaypoint(Waypoint waypoint) 
         void PrintMembers()
         {
             Debug.Log("speed:" + m_Speed);
