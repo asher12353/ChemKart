@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; 
 
 namespace ChemKart
 {
@@ -13,6 +14,9 @@ namespace ChemKart
         [SerializeField] private Button m_MultiplayerButton;
         [SerializeField] private Button m_SettingsButton;
         [SerializeField] private Button m_QuitButton;
+
+        [Header("Scene")]
+        [SerializeField] private string m_MainGameSceneName; 
 
         private void Awake()
         {
@@ -41,6 +45,7 @@ namespace ChemKart
         private void OnSoloButtonClicked()
         {
             Debug.Log("Solo Button Clicked");
+            SceneManager.LoadScene(m_MainGameSceneName); 
         }
         
         private void OnMultiplayerButtonClicked()
