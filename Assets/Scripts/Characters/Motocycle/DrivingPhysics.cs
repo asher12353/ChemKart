@@ -18,6 +18,7 @@ namespace ChemKart
         public bool debug;
         public bool shielded;
         public float currentSpeed;
+        public bool passedRequiredWaypoint;
         private float m_Speed;
         private float m_Rotation;
         private float m_CurrentRotation;

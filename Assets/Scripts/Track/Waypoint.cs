@@ -8,6 +8,7 @@ namespace ChemKart
         public int waypointIndex;
         public Waypoint nextWaypoint;
         public event Action<Collider> OnTriggerEnterEvent;
+        [SerializeField] private bool m_IsRequiredWaypoint;
         
         public void OnTriggerEnter(Collider other)
         {
@@ -15,6 +16,11 @@ namespace ChemKart
             if(!driver)
             {
                 return;
+            }
+            if(m_IsRequiredWaypoint)
+            {
+                Debug.Log("Passed a required waypoint");
+                driver.passedRequiredWaypoint = true;
             }
             driver.SetWaypoint(this);
             OnTriggerEnterEvent?.Invoke(other);

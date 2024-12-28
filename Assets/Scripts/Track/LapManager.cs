@@ -42,6 +42,18 @@ namespace ChemKart
         }
         void WaypointCrossed(Collider other)
         {
+            DrivingPhysics driver = other.transform.parent.GetComponent<DrivingPhysics>();
+            if(!driver)
+            {
+                Debug.LogWarning("Couldn't get the driving physics component when crossing the line");
+                return;
+            }
+            if(!driver.passedRequiredWaypoint)
+            {
+                Debug.Log("Player trying to pass finish line without going through a required checkpoint");
+                return;
+            }
+            driver.passedRequiredWaypoint = false;
             Character character = other.transform.parent.GetComponent<Character>();
             if(!character)
             {
