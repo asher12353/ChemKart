@@ -28,6 +28,7 @@ namespace ChemKart
         private float m_DriftDirection;
         private bool m_Drifting;
         private bool m_Damaged;
+        public bool canAttack; 
         private Rigidbody rb;
         private Transform m_Sphere;
         private Transform m_Model;
@@ -68,6 +69,8 @@ namespace ChemKart
             m_Model = transform.GetChild(1); // this could be better updated to grab the right model but I'm unsure of a way to do so yet
             m_MostRecentWaypoint = WaypointManager.m_Waypoints[0];
             random = new System.Random((int)seed);
+            
+            
         }
 
         void Update()

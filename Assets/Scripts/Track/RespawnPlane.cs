@@ -4,7 +4,7 @@ namespace ChemKart
 {
     public class RespawnPlane : MonoBehaviour
     {
-        void OnTriggerEnter(Collider other)
+        void OnCollisionEnter(Collision other)
         {
             Debug.Log("Respawning a driver");
             DrivingPhysics driver = other.transform.parent.GetComponent<DrivingPhysics>();
