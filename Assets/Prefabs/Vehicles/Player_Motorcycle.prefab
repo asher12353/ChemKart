@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550892628015319811}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11915997, y: -0.012922379, z: 0.0092922505, w: 0.99274755}
+  m_LocalRotation: {x: 0.11926667, y: -0.00094297907, z: 0.007849793, w: 0.9928308}
   m_LocalPosition: {x: 0, y: 2.698, z: -4.383}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7516174657587344827}
-  m_LocalEulerAnglesHint: {x: 13.7, y: -1.383, z: 0.906}
+  m_LocalEulerAnglesHint: {x: 13.7, y: 0, z: 0.906}
 --- !u!20 &3544289389595473246
 Camera:
   m_ObjectHideFlags: 0
@@ -303,6 +303,7 @@ GameObject:
   - component: {fileID: 4963899484156641481}
   - component: {fileID: 6984200043404171731}
   - component: {fileID: 3138674474656165665}
+  - component: {fileID: 4834952014322450428}
   m_Layer: 0
   m_Name: Player_Motorcycle
   m_TagString: Motorcycle
@@ -472,6 +473,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6950750823685586026}
+        m_TargetAssemblyTypeName: ChemKart.DrivingPhysics, Assembly-CSharp
+        m_MethodName: ToggleCameraEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 887da6cc-f2df-4593-bd37-82d4f3209e15
+    m_ActionName: 'Player/Toggle Camera[/Keyboard/f]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -489,6 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9149ef60a548ddc449ba7e7c9d73d191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Camera: {fileID: 3544289389595473246}
   drivingMode: 1
   driftFactor: 0.3
   accelerationSpeed: 30
@@ -499,6 +517,7 @@ MonoBehaviour:
   debug: 0
   shielded: 0
   currentSpeed: 0
+  passedRequiredWaypoint: 0
 --- !u!114 &9153315787835088802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,7 +531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlayerHUD: {fileID: 3138674474656165665}
-  m_PossibleRecipesHUD: {fileID: 0}
+  m_PossibleRecipesHUD: {fileID: 4834952014322450428}
   m_Recipes:
   - {fileID: 8206639600198915904, guid: 61dc9119af2322e4ea0a58c6ce127660, type: 3}
   - {fileID: 3857206055730159355, guid: 392e611034cf5cd4d9583cd325a6f937, type: 3}
@@ -547,7 +566,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  emptySprite: {fileID: 21300000, guid: 23d0a59ac668faf42a18827bfe1f5b9b, type: 3}
+  emptySprite: {fileID: 21300000, guid: 20454a2127e96884cb5d62e4c70b27f6, type: 3}
 --- !u!114 &3138674474656165665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563,7 +582,25 @@ MonoBehaviour:
   m_ItemSlots:
   - {fileID: 0}
   - {fileID: 0}
-  emptySprite: {fileID: 21300000, guid: 23d0a59ac668faf42a18827bfe1f5b9b, type: 3}
+  emptySprite: {fileID: 21300000, guid: 20454a2127e96884cb5d62e4c70b27f6, type: 3}
+--- !u!114 &4834952014322450428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8544877664736114457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f38ceead4f6b954aacfacd6081e7b25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ItemSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  emptySprite: {fileID: 21300000, guid: 20454a2127e96884cb5d62e4c70b27f6, type: 3}
 --- !u!1001 &6813560325783073760
 PrefabInstance:
   m_ObjectHideFlags: 0

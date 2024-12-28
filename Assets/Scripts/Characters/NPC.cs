@@ -6,7 +6,7 @@ namespace ChemKart
     {
         public void Awake()
         {
-            lapNumber = 0;
+            lapNumber = 1;
         }
     }
 }

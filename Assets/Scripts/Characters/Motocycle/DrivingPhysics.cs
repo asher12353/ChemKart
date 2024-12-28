@@ -7,6 +7,7 @@ namespace ChemKart
 {
     public class DrivingPhysics : MonoBehaviour
     {
+        [SerializeField] private Camera m_Camera;
         public enum DrivingMode{AI, Player};
         public DrivingMode drivingMode = DrivingMode.Player;
         public float driftFactor = 0.8f;
@@ -131,6 +132,10 @@ namespace ChemKart
 
         public void MoveEvent(InputAction.CallbackContext context)
         {
+            if(drivingMode == DrivingMode.AI)
+            {
+                return;
+            }
             if(context.performed)
             {
                 m_Input = context.ReadValue<Vector2>();
@@ -151,6 +156,10 @@ namespace ChemKart
 
         public void BrakeEvent(InputAction.CallbackContext context)
         {
+            if(drivingMode == DrivingMode.AI)
+            {
+                return;
+            }
             if(context.performed)
             {
                 Break();
@@ -159,6 +168,10 @@ namespace ChemKart
 
         public void DriftEvent(InputAction.CallbackContext context)
         {
+            if(drivingMode == DrivingMode.AI)
+            {
+                return;
+            }
             if(context.performed)
             {
                 m_Drifting = true;
@@ -168,6 +181,22 @@ namespace ChemKart
             {
                 m_Drifting = false;
                 m_DriftDirection = 0;
+            }
+        }
+
+        public void ToggleCameraEvent(InputAction.CallbackContext context)
+        {
+            if(drivingMode == DrivingMode.AI)
+            {
+                return;
+            }
+            if(context.performed)
+            {
+                ReverseCamera();
+            }
+            else
+            {
+                ReverseCamera();
             }
         }
 
@@ -207,6 +236,18 @@ namespace ChemKart
             {
                 m_CurrentRotation = 0;
             }
+        }
+
+        void ReverseCamera()
+        {
+            Vector3 newLocalPosition = m_Camera.transform.localPosition;
+            newLocalPosition.z *= -1;
+            m_Camera.transform.localPosition = newLocalPosition;
+
+            float currentYRotation = m_Camera.transform.eulerAngles.y;
+            currentYRotation += 180;
+            currentYRotation %= 360;
+            m_Camera.transform.eulerAngles = new Vector3(transform.eulerAngles.x, currentYRotation, transform.eulerAngles.z);
         }
 
         public void StopMovement()
