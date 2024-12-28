@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 6359990706505499713}
   - component: {fileID: 6981639727994810488}
   - component: {fileID: 2448485422369882217}
+  - component: {fileID: 3109914367095850161}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Motorcycle
@@ -288,6 +289,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Owner: {fileID: 4963899484156641481}
   m_Items: []
+--- !u!114 &3109914367095850161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2485064047880072092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e13454dbf9be9de4691cda1099d04bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8544877664736114457
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +531,7 @@ MonoBehaviour:
   shielded: 0
   currentSpeed: 0
   passedRequiredWaypoint: 0
+  canAttack: 0
 --- !u!114 &9153315787835088802
 MonoBehaviour:
   m_ObjectHideFlags: 0
