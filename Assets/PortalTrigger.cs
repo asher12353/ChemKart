@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
+using static ChemKart.Portal;
 
 namespace ChemKart
 {
@@ -13,14 +14,27 @@ namespace ChemKart
         public GameObject exitPortal;
 
         private Portal portalInfo;
-        private float portalResetTime; 
+        private float portalResetTime;
+
+        private Dictionary<PortalColor, Color> colorDictionary; 
         
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             portalInfo = enterPortal.GetComponent<Portal>(); 
             DeactivatePortals();
-            portalResetTime = 5f; 
+            portalResetTime = 5f;
+
+            colorDictionary = new Dictionary<PortalColor, Color>
+            {
+                { PortalColor.R, Color.red },
+                { PortalColor.Y, Color.yellow },
+                { PortalColor.G, Color.green },
+                { PortalColor.B, Color.blue }
+
+            };
+
+            UpdateTriggerColor(); 
         }
 
         // Update is called once per frame
@@ -71,6 +85,14 @@ namespace ChemKart
         {
             yield return new WaitForSeconds(portalResetTime);
             DeactivatePortals(); 
+        }
+
+        private void UpdateTriggerColor()
+        {
+            Renderer renderer = GetComponent<Renderer>();
+            Material material = renderer.material;
+            material.color = colorDictionary[portalInfo.color]; 
+            
         }
     }
 }
