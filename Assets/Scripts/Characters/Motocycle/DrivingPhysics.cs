@@ -186,7 +186,7 @@ namespace ChemKart
             float angleToTarget = Vector3.SignedAngle(currentForward, targetDirection, Vector3.up);
 
             float steeringInput = Mathf.Clamp(angleToTarget / 45f, -1f, 1f);
-            steeringInput += (float)random.NextDouble() * 0.1f; // this is to attempt to add some sort of randomness to the AI's driving
+            steeringInput += (float)random.NextDouble() * 0.2f; // this is to attempt to add some sort of randomness to the AI's driving
             Steer(steeringInput, 1);
             return angleToTarget;
         }
