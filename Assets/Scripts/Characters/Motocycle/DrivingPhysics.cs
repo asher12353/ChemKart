@@ -32,6 +32,8 @@ namespace ChemKart
         private Transform m_Model;
         private Waypoint m_MostRecentWaypoint;
         private Vector2 m_Input;
+        private long seed = DateTime.Now.Ticks;
+        private System.Random random;
 
         public void Respawn()
         {
@@ -64,6 +66,7 @@ namespace ChemKart
             rb = m_Sphere.GetComponent<Rigidbody>();
             m_Model = transform.GetChild(1); // this could be better updated to grab the right model but I'm unsure of a way to do so yet
             m_MostRecentWaypoint = WaypointManager.m_Waypoints[0];
+            random = new System.Random((int)seed);
         }
 
         void Update()
@@ -183,6 +186,7 @@ namespace ChemKart
             float angleToTarget = Vector3.SignedAngle(currentForward, targetDirection, Vector3.up);
 
             float steeringInput = Mathf.Clamp(angleToTarget / 45f, -1f, 1f);
+            steeringInput += (float)random.NextDouble() * 0.1f; // this is to attempt to add some sort of randomness to the AI's driving
             Steer(steeringInput, 1);
             return angleToTarget;
         }
