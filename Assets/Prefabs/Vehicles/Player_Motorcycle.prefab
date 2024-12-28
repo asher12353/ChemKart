@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550892628015319811}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.18, z: -2.28}
+  m_LocalRotation: {x: 0.031149076, y: 0, z: 0, w: 0.99951476}
+  m_LocalPosition: {x: 0, y: 1.58, z: -3.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7516174657587344827}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.57, y: 0, z: 0}
 --- !u!20 &3544289389595473246
 Camera:
   m_ObjectHideFlags: 0
@@ -489,8 +489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9149ef60a548ddc449ba7e7c9d73d191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navMeshAgent: {fileID: 0}
-  m_AITurnValue: 1
   drivingMode: 1
   driftFactor: 0.3
   accelerationSpeed: 30
@@ -513,10 +511,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197bdfb462c499e4f8a34512ba32a05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHUD: {fileID: 3138674474656165665}
-  recipes:
-  - {fileID: 3857206055730159355, guid: 392e611034cf5cd4d9583cd325a6f937, type: 3}
+  m_PlayerHUD: {fileID: 3138674474656165665}
+  m_Recipes:
   - {fileID: 8206639600198915904, guid: 61dc9119af2322e4ea0a58c6ce127660, type: 3}
+  - {fileID: 3857206055730159355, guid: 392e611034cf5cd4d9583cd325a6f937, type: 3}
   - {fileID: 3773469057258236318, guid: f4655799fff7d52498b3fc92482bafb3, type: 3}
 --- !u!114 &4963899484156641481
 MonoBehaviour:

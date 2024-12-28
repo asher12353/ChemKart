@@ -4,7 +4,7 @@ namespace ChemKart
 {
     public class CreateBomb : Powerup
     {
-        public float distanceFromVehicle = 5f;
+        public float distanceAwayFromVehicle = 5f;
         public Bomb bomb;
 
         public CreateBomb()
@@ -14,8 +14,10 @@ namespace ChemKart
 
         public override void Effect(GameObject vehicle)
         {
-            Vector3 pos = vehicle.transform.GetChild(0).transform.position;
-            Bomb b = Instantiate(bomb, new Vector3(pos.x, bomb.GetComponent<SphereCollider>().radius + 0.5f, pos.z - distanceFromVehicle), Quaternion.identity);
+            Transform sphere = vehicle.transform.GetChild(0).transform; 
+            Vector3 pos = sphere.position;
+            Vector3 spawnPosition = pos + vehicle.transform.GetChild(1).transform.forward * distanceAwayFromVehicle;
+            Bomb b = Instantiate(bomb, spawnPosition, Quaternion.identity);
             b.StartExplosion();
         }
     }

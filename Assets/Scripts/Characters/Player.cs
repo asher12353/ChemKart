@@ -11,6 +11,7 @@ namespace ChemKart
         
         private void Awake()
         {
+            lapNumber = 0;
             if (!m_PlayerHUD)
             {
                 Debug.LogWarning($"{name}: Player HUD is not set.");
