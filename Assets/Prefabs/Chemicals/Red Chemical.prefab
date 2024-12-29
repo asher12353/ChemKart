@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1695388218375670692}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3042301, y: -0.15343226, z: 0.8717174}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -74,7 +74,7 @@ Transform:
   m_GameObject: {fileID: 5318279413248990409}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.17, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -170,7 +170,6 @@ MonoBehaviour:
   m_Collider: {fileID: 6923802566207152097}
   m_InventoryIcon: {fileID: 21300000, guid: a3c00e4d7eaf3a54899b6c1ba425a94d, type: 3}
   m_RespawnTime: 10
-  m_AudioClipPlayer: {fileID: 0}
   chemicalValue: R
 --- !u!1001 &8056736903294273195
 PrefabInstance:

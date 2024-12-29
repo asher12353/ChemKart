@@ -19,7 +19,11 @@ namespace ChemKart
                 {
                     if(physics.canAttack)
                     {
-                        collision.gameObject.GetComponent<DrivingPhysics>().Damage(); 
+                        DrivingPhysics driver = collision.gameObject.GetComponentInParent<DrivingPhysics>();
+                        if(driver)
+                        {
+                            driver.Damage(); 
+                        }
                     }
                 }
             }
