@@ -345,6 +345,14 @@ PrefabInstance:
       propertyPath: m_PossibleRecipesHUD
       value: 
       objectReference: {fileID: 122766946}
+    - target: {fileID: 9153315787835088802, guid: b1bd6a4b74df0ed4dacf5f058769c6a4, type: 3}
+      propertyPath: m_Recipes.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153315787835088802, guid: b1bd6a4b74df0ed4dacf5f058769c6a4, type: 3}
+      propertyPath: 'm_Recipes.Array.data[3]'
+      value: 
+      objectReference: {fileID: 4888415511905795449, guid: f0ce2bf5404da1f4480774eb1083b035, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
