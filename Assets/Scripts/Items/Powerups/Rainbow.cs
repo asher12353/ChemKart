@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading.Tasks; 
 using UnityEngine;
 
 namespace ChemKart
@@ -17,20 +18,23 @@ namespace ChemKart
         {
             
         }
-
         public override void Effect(GameObject vehicle)
         {
-            StartCoroutine(RainbowEffect(vehicle)); 
+            RunRainbowEffect(vehicle);
+        }
+        private async void RunRainbowEffect(GameObject vehicle)
+        {
+            await RainbowEffect(vehicle);
         }
 
-        private IEnumerator RainbowEffect(GameObject vehicle)
+        private async Task RainbowEffect(GameObject vehicle)
         {
             DrivingPhysics physics = vehicle.GetComponent<DrivingPhysics>();
             Renderer[] renderers = vehicle.GetComponentsInChildren<Renderer>();
 
-            if (physics != null)
+            if (physics != null && renderers.Length > 0)
             {
-                // Store original colors
+                // Store the original colors
                 Color[] originalColors = new Color[renderers.Length];
                 for (int i = 0; i < renderers.Length; i++)
                 {
@@ -45,9 +49,9 @@ namespace ChemKart
                 physics.canAttack = true;
                 physics.accelerationSpeed *= 2;
 
-                // Flash rainbow colors for 10 seconds
+                // Flash rainbow colors for 5 seconds
                 float elapsedTime = 0f;
-                while (elapsedTime < 10f)
+                while (elapsedTime < 5f)
                 {
                     foreach (Renderer renderer in renderers)
                     {
@@ -58,7 +62,7 @@ namespace ChemKart
                     }
 
                     elapsedTime += 0.1f;
-                    yield return new WaitForSeconds(0.1f);
+                    await Task.Delay(100); // Wait for 0.1 seconds (100ms)
                 }
 
                 // Reset to original colors
