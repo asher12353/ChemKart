@@ -18,6 +18,8 @@ namespace ChemKart
         [Header("Scene")]
         [SerializeField] private string m_MainGameSceneName; 
 
+        [SerializeField] private AudioClipPlayer m_AudioClipPlayer;
+
         private void Awake()
         {
             if (!m_SoloButton || !m_MultiplayerButton || !m_SettingsButton || !m_QuitButton)
@@ -45,7 +47,8 @@ namespace ChemKart
         private void OnSoloButtonClicked()
         {
             Debug.Log("Solo Button Clicked");
-            SceneManager.LoadScene(m_MainGameSceneName); 
+            SceneManager.LoadScene(m_MainGameSceneName);
+            m_AudioClipPlayer.PlayClip();
         }
         
         private void OnMultiplayerButtonClicked()

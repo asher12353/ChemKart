@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Collider: {fileID: 6923802566207152097}
   m_InventoryIcon: {fileID: 21300000, guid: a3c00e4d7eaf3a54899b6c1ba425a94d, type: 3}
   m_RespawnTime: 10
+  m_AudioClipPlayer: {fileID: 0}
   chemicalValue: R
 --- !u!1001 &8056736903294273195
 PrefabInstance:

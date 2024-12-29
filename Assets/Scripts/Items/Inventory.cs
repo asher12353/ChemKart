@@ -16,6 +16,8 @@ namespace ChemKart
         [Header("Inventory")]
         [SerializeField] private List<Collectable> m_Items = new();
         
+        [SerializeField] private AudioClipPlayer m_AudioClipPlayer;
+        
         private void Awake()
         {
             if (!m_Owner)
@@ -35,7 +37,10 @@ namespace ChemKart
             {
                 return false;
             }
-            
+            if(m_AudioClipPlayer)
+            {
+                m_AudioClipPlayer.PlayClip();
+            }
             m_Items.Add(item);
             InventoryChanged?.Invoke();
 
