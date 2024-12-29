@@ -12,7 +12,6 @@ namespace ChemKart
         [Header("Collectable")]
         [SerializeField] private Sprite m_InventoryIcon;
         [SerializeField] private float m_RespawnTime = 10f;
-        [SerializeField] private AudioClipPlayer m_AudioClipPlayer;
         
         public Sprite InventoryIcon => m_InventoryIcon;
         
@@ -39,10 +38,6 @@ namespace ChemKart
             {
                 if (inventory.AddItem(this))
                 {
-                    if(m_AudioClipPlayer && other.transform.parent.GetComponent<Player>())
-                    { 
-                        m_AudioClipPlayer.PlayClip();
-                    }
                     WaitForRespawn().Forget();
                 }
             }

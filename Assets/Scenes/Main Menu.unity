@@ -2216,6 +2216,7 @@ MonoBehaviour:
   m_AudioClip: {fileID: 8300000, guid: 390de31458ceaf3448a738844dffc1c3, type: 3}
   m_StartTime: 0
   m_EndTime: 0.3
+  m_AudioSource: {fileID: 2110335410}
 --- !u!82 &2110335410
 AudioSource:
   m_ObjectHideFlags: 0

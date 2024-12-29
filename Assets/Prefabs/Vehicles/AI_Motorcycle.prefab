@@ -52,6 +52,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1669505933221604915, guid: b1bd6a4b74df0ed4dacf5f058769c6a4, type: 3}
+      propertyPath: MaxDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669505933221604915, guid: b1bd6a4b74df0ed4dacf5f058769c6a4, type: 3}
+      propertyPath: MinDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669505933221604915, guid: b1bd6a4b74df0ed4dacf5f058769c6a4, type: 3}
+      propertyPath: rolloffMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1669505933221604915, guid: b1bd6a4b74df0ed4dacf5f058769c6a4, type: 3}
+      propertyPath: DopplerLevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2448485422369882217, guid: b1bd6a4b74df0ed4dacf5f058769c6a4, type: 3}
       propertyPath: m_Owner
       value: 
@@ -66,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4649605537099374658, guid: b1bd6a4b74df0ed4dacf5f058769c6a4, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4834952014322450428, guid: b1bd6a4b74df0ed4dacf5f058769c6a4, type: 3}
       propertyPath: m_Enabled

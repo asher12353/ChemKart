@@ -10,8 +10,10 @@ namespace ChemKart
         [SerializeField] private AudioClip m_AudioClip;
         [SerializeField] private float m_StartTime;
         [SerializeField] private float m_EndTime;
-        
-        private AudioSource m_AudioSource;
+        [SerializeField] private AudioSource m_AudioSource;
+        [SerializeField] private bool m_Looping;
+        private bool m_StopLooping;
+        public bool isPlaying;
 
         void Awake()
         {
@@ -27,18 +29,40 @@ namespace ChemKart
             }
             m_AudioSource.clip = m_AudioClip;
         }
+
+        public void StopLooping() 
+        {
+            m_StopLooping = true;
+            isPlaying = false;
+            m_AudioSource.Stop();
+        }
     
         public void PlayClip()
         {
+            isPlaying = true;
             m_AudioSource.time = m_StartTime;
             m_AudioSource.Play();
-            StartCoroutine(StopAfterDuration(m_EndTime - m_StartTime));
+            if(m_Looping && !m_StopLooping)
+            {
+                StartCoroutine(LoopAfterDuration(m_EndTime - m_StartTime));
+            }
+            else
+            {   
+                StartCoroutine(StopAfterDuration(m_EndTime - m_StartTime));
+            }
         }
 
         IEnumerator StopAfterDuration(float duration)
         {
             yield return new WaitForSeconds(duration);
             m_AudioSource.Stop();
+            isPlaying = false;
+        }
+
+        IEnumerator LoopAfterDuration(float duration)
+        {
+            yield return new WaitForSeconds(duration);
+            PlayClip();
         }
     }
 }

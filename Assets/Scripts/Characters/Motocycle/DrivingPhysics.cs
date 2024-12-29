@@ -8,6 +8,7 @@ namespace ChemKart
     public class DrivingPhysics : MonoBehaviour
     {
         [SerializeField] private Camera m_Camera;
+        [SerializeField] private AudioClipPlayer m_EngineReving;
         public enum DrivingMode{AI, Player};
         public DrivingMode drivingMode = DrivingMode.Player;
         public float driftFactor = 0.8f;
@@ -70,8 +71,6 @@ namespace ChemKart
             m_Model = transform.GetChild(1); // this could be better updated to grab the right model but I'm unsure of a way to do so yet
             m_MostRecentWaypoint = WaypointManager.m_Waypoints[0];
             random = new System.Random((int)seed);
-            
-            
         }
 
         void Update()
@@ -98,6 +97,10 @@ namespace ChemKart
             {
                 if (!m_Damaged)
                 {
+                    if(!m_EngineReving.isPlaying)
+                    {
+                        m_EngineReving.PlayClip();
+                    }
                     float angleToTarget = AISteer();
 
                     if (Mathf.Abs(angleToTarget) > 45f)
@@ -112,6 +115,7 @@ namespace ChemKart
                 else
                 {
                     m_Speed = 0;
+                    m_EngineReving.StopLooping();
                 }
             }
 
@@ -141,6 +145,10 @@ namespace ChemKart
             }
             if(context.performed)
             {
+                if(!m_EngineReving.isPlaying)
+                {
+                    m_EngineReving.PlayClip();
+                }
                 m_Input = context.ReadValue<Vector2>();
                 if(Mathf.Abs(m_Input.x) < m_InputClampThreshold)
                 {
@@ -154,6 +162,7 @@ namespace ChemKart
             else
             {
                 m_Input = Vector2.zero;
+                m_EngineReving.StopLooping();
             }
         }
 
