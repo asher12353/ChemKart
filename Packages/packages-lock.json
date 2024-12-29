@@ -7,13 +7,6 @@
       "dependencies": {},
       "hash": "f9fd769be7c634610f2a61aa914a1a55f34740e1"
     },
-    "com.justgif.utils": {
-      "version": "https://github.com/justgif/Unity-Utils.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "6cdc1b495b75263990196c5c664671fb4e736230"
-    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
