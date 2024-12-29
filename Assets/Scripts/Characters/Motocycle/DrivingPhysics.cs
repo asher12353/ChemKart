@@ -34,6 +34,8 @@ namespace ChemKart
         private Rigidbody rb;
         private Transform m_Sphere;
         private Transform m_Model;
+        [SerializeField] private Transform m_FrontWheel;
+        [SerializeField] private Transform m_RearWheel; 
         private Waypoint m_MostRecentWaypoint;
         private Vector2 m_Input;
         private long seed = DateTime.Now.Ticks;
@@ -121,6 +123,8 @@ namespace ChemKart
 
             currentSpeed = Mathf.SmoothStep(currentSpeed, m_Speed, Time.deltaTime * 12f);
             m_CurrentRotation = Mathf.Lerp(m_CurrentRotation, m_Rotation, Time.deltaTime * 4f);
+
+            RotateWheels(); 
 
             StopIfBelowTheThreshold();
 
@@ -307,6 +311,22 @@ namespace ChemKart
             if (rb != null)
             {
                 rb.linearVelocity = forwardDirection * currentSpeed;
+            }
+        }
+
+        private void RotateWheels()
+        {
+            if (m_FrontWheel != null)
+            {
+                // Rotate front wheel around X-axis based on speed
+                m_FrontWheel.Rotate(Vector3.right * currentSpeed * Time.deltaTime * 360f);
+
+            }
+
+            if (m_RearWheel != null)
+            {
+                // Rotate rear wheel around X-axis based on speed
+                m_RearWheel.Rotate(Vector3.right * currentSpeed * Time.deltaTime * 360f);
             }
         }
 
