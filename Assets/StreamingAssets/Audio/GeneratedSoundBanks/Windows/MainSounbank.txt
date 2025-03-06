@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	417627684	PlayMusic			\Default Work Unit\PlayMusic	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	934402404	ztmusic-heartbeat-acceleration-eurobeat-206094 [music only]	Y:\Documents\GitHub\ChemKart\ChemKart_WwiseProject\.cache\57\{5706832C-A89F-FA18-1C8C-42B1F939479B}.wem		\Interactive Music Hierarchy\Default Work Unit\Music1\ztmusic-heartbeat-acceleration-eurobeat-206094 [music only]		32958672
+

@@ -1,0 +1,47 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1102223083",
+    "Type": "User",
+    "GUID": "{7C579735-9D2D-4B26-B427-CBCED8FB1D83}",
+    "Language": "SFX",
+    "Hash": "{8E8A6B62-4FB1-9543-1BB3-4430DB5BD575}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\MainSounbank",
+    "ShortName": "MainSounbank",
+    "Path": "MainSounbank.bnk",
+    "Media": [
+     {
+      "Id": "934402404",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ztmusic-heartbeat-acceleration-eurobeat-206094 [music only].wav",
+      "CachePath": "57/{5706832C-A89F-FA18-1C8C-42B1F939479B}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "417627684",
+      "Name": "PlayMusic",
+      "ObjectPath": "\\Events\\Default Work Unit\\PlayMusic",
+      "GUID": "{6E3AC012-9F1C-4DD1-BFB5-FDF4F46E67E9}",
+      "DurationType": "OneShot",
+      "DurationMin": "186.84",
+      "DurationMax": "186.84",
+      "MediaRefs": [
+       {
+        "Id": "934402404"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{C30A8F24-D7F7-CABB-75DA-B0B45FA0C434}"
+ }
+}

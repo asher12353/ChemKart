@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{AF06BF66-E8A7-4B3B-B709-ED406100B9EF}" SchemaVersion="123">
+	<InteractiveMusic>
+		<WorkUnit Name="Default Work Unit" ID="{AF06BF66-E8A7-4B3B-B709-ED406100B9EF}" PersistMode="Standalone">
+			<ChildrenList>
+				<MusicSegment Name="Music1" ID="{9E1EF3E9-B092-4C7F-8E3D-86FEAD37A2DA}" ShortID="197318607">
+					<PropertyList>
+						<Property Name="EndPosition" Type="Real64" Value="186840"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{8D75BC3E-44D1-4EFC-9B89-EB524CC4463E}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{02FD72B2-BE18-4571-9B22-EE3594289702}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<MusicTrack Name="ztmusic-heartbeat-acceleration-eurobeat-206094 [music only]" ID="{5C919D45-F766-4B44-8633-C655B4BE6B9F}" ShortID="397238661">
+							<ReferenceList>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{02FD72B2-BE18-4571-9B22-EE3594289702}"/>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{424D59F8-6BAC-41F8-90E3-390B85BCB98A}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="ztmusic-heartbeat-acceleration-eurobeat-206094 [music only]" ID="{482970A8-5044-4E6E-BEAE-3D3E204516B3}">
+									<Language>SFX</Language>
+									<AudioFile>ztmusic-heartbeat-acceleration-eurobeat-206094 [music only].wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="934402404"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Sequences">
+									<Reference>
+										<Local>
+											<MusicTrackSequence Name="" ID="{5A8CF0F4-472B-4EFD-9DA9-582A35DA69F7}">
+												<ObjectLists>
+													<ObjectList Name="Clips">
+														<Reference>
+															<Local>
+																<MusicClip Name="ztmusic-heartbeat-acceleration-eurobeat-206094 [music only]" ID="{A020EC0C-E37D-455D-8572-EA6E79722923}">
+																	<PropertyList>
+																		<Property Name="EndTrimOffset" Type="Real64" Value="186840"/>
+																		<Property Name="FadeInMode" Type="int16" Value="0"/>
+																		<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																	</PropertyList>
+																	<AudioSourceRef Name="ztmusic-heartbeat-acceleration-eurobeat-206094 [music only]" ID="{482970A8-5044-4E6E-BEAE-3D3E204516B3}"/>
+																</MusicClip>
+															</Local>
+														</Reference>
+													</ObjectList>
+												</ObjectLists>
+											</MusicTrackSequence>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</MusicTrack>
+					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="Cues">
+							<Reference>
+								<Local>
+									<MusicCue Name="Entry Cue" ID="{D09A3841-23CA-4E16-AC90-A22F458041D7}"/>
+								</Local>
+							</Reference>
+							<Reference>
+								<Local>
+									<MusicCue Name="Exit Cue" ID="{C1F39C5D-5FC3-45F9-8CB3-D839AFB24B21}">
+										<PropertyList>
+											<Property Name="CueType" Type="int16" Value="1"/>
+											<Property Name="TimeMs" Type="Real64" Value="186840"/>
+										</PropertyList>
+									</MusicCue>
+								</Local>
+							</Reference>
+						</ObjectList>
+					</ObjectLists>
+				</MusicSegment>
+			</ChildrenList>
+		</WorkUnit>
+	</InteractiveMusic>
+</WwiseDocument>
