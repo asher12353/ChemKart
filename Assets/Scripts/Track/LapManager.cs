@@ -6,19 +6,20 @@ namespace ChemKart
 {
     public class LapManager : MonoBehaviour
     {
-        [SerializeField] private Waypoint m_LapWaypoint;
         [SerializeField] private int m_NumLaps = 3;
         [SerializeField] private TMPro.TextMeshProUGUI m_NumLapsText;
         [SerializeField] private TMPro.TextMeshProUGUI m_PlayerLapText;
         [SerializeField] private TMPro.TextMeshProUGUI m_GameOverText;
         [SerializeField] private Player m_Player;
-        [SerializeField] private GameObject m_Racers;
+        public GameObject racers;
+        private Waypoint m_LapWaypoint;
         
         void Start()
         {
+            m_LapWaypoint = GameObject.FindGameObjectWithTag("FinishLineWaypoint").GetComponent<Waypoint>();
             if(!m_LapWaypoint)
             {
-                Debug.LogError("The m_LapWaypoint is not set!");
+                Debug.LogError("The m_LapWaypoint is not found!");
                 return;
             }
             m_LapWaypoint.OnTriggerEnterEvent += WaypointCrossed;
@@ -64,7 +65,7 @@ namespace ChemKart
             if(character.lapNumber == m_NumLaps + 1)
             {
                 m_GameOverText.gameObject.SetActive(true);
-                foreach(Transform racer in m_Racers.transform)
+                foreach(Transform racer in racers.transform)
                 {
                     racer.GetComponent<DrivingPhysics>().enabled = false;
                 }

@@ -19,7 +19,7 @@ namespace ChemKart
 
         void Start()
         {
-            m_PlayerInventory = transform.GetChild(0).GetComponent<Inventory>();
+            m_PlayerInventory = transform.GetComponentInChildren<Inventory>();
             m_PlayerInventory.InventoryChanged += CheckAllPossibleRecipes;
         }
 

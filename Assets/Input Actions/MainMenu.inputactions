@@ -1,0 +1,67 @@
+{
+    "name": "MainMenu",
+    "maps": [
+        {
+            "name": "MainMenu",
+            "id": "bdd7a85f-759c-4471-a7f3-8d6d6cf7e766",
+            "actions": [
+                {
+                    "name": "Join",
+                    "type": "Button",
+                    "id": "552c26c8-235c-4b54-b1c6-9d058921302a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "dd85fb5b-0c6e-4cfb-aad3-b794cc18ff58",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1fc97060-2d67-4ff2-a413-befc5fa8b124",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a2aec03b-e758-4943-900f-2219d7137034",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "64fbe6bc-7f05-46d3-ba64-84127b45f0fc",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -9,6 +9,7 @@ namespace ChemKart
     {
         [SerializeField] private Camera m_Camera;
         [SerializeField] private AudioClipPlayer m_EngineReving;
+        public InputDevice playerInput;
         public enum DrivingMode{AI, Player};
         public DrivingMode drivingMode = DrivingMode.Player;
         public float driftFactor = 0.8f;
@@ -68,9 +69,9 @@ namespace ChemKart
         void Start()
         {
             // grabs the needed components
-            m_Sphere = transform.GetChild(0);
+            m_Sphere = transform.GetComponentInChildren<Rigidbody>().transform;
             rb = m_Sphere.GetComponent<Rigidbody>();
-            m_Model = transform.GetChild(1); // this could be better updated to grab the right model but I'm unsure of a way to do so yet
+            m_Model = transform.GetChild(2); // this could be better updated to grab the right model but I'm unsure of a way to do so yet
             m_MostRecentWaypoint = WaypointManager.m_Waypoints[0];
             random = new System.Random((int)seed);
         }
