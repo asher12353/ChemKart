@@ -8,8 +8,7 @@ namespace ChemKart
 {
     public class PlayerJoining : MonoBehaviour
     {
-        public static PlayerJoining Instance;
-        public List<PlayerData> playersData = new List<PlayerData>();
+        public static List<PlayerData> playersData = new List<PlayerData>();
 
         [SerializeField]
         private GameObject m_Names;
@@ -19,10 +18,8 @@ namespace ChemKart
         private HashSet<InputDevice> m_JoinedPlayersControllerID;
 
 
-        private void Start()
+        private void Awake()
         {
-            DontDestroyOnLoad(gameObject);
-            Instance = this;
             m_NumPlayersJoined = 0;
             m_JoinedPlayersControllerID = new HashSet<InputDevice>();
             foreach(TMP_InputField name in m_Names.transform.GetComponentsInChildren<TMP_InputField>())
@@ -30,7 +27,7 @@ namespace ChemKart
                 name.gameObject.SetActive(false);
             }
         }
-
+        
         public void OnPlayerJoined(InputAction.CallbackContext context)
         {
             if(m_NumPlayersJoined >= m_Names.transform.childCount || !gameObject.active || !context.performed || m_JoinedPlayersControllerID.Contains(context.control.device)) return;

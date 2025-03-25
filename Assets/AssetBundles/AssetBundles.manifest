@@ -1,0 +1,12 @@
+ManifestFileVersion: 0
+UnityVersion: 6000.0.26f1
+CRC: 2336575465
+HashAppended: 0
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: testtrack
+      Dependencies: {}
+    Info_1:
+      Name: modtrack
+      Dependencies: {}

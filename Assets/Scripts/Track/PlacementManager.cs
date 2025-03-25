@@ -9,9 +9,10 @@ namespace ChemKart
 {
     public class PlacementManager : MonoBehaviour
     {
-        private GameObject racerObject;
-        private List<GameObject> racers;
-        private GameObject player; 
+        private GameObject m_RacerObject;
+        private List<GameObject> m_Racers;
+        [SerializeField]
+        private GameObject m_Player; 
 
         // dictionary for each racer with their associated driving physics 
         private Dictionary<GameObject, DrivingPhysics> drivingPhysics;
@@ -22,25 +23,20 @@ namespace ChemKart
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            racerObject = GameObject.Find("Racers"); 
-            racers = new List<GameObject>();
+            m_RacerObject = GameObject.Find("Racers"); 
+            m_Racers = new List<GameObject>();
             drivingPhysics = new Dictionary<GameObject, DrivingPhysics>(); 
             characters = new Dictionary<GameObject, Character>();
-            if( racerObject != null ) 
+            if( m_RacerObject != null ) 
             {
                 // initialize racers list 
-                foreach (Transform child in racerObject.transform)
+                foreach (Transform child in m_RacerObject.transform)
                 {
                     if(child.gameObject != null)
                     {
-                        racers.Add(child.gameObject);
+                        m_Racers.Add(child.gameObject);
                         drivingPhysics[child.gameObject] = child.gameObject.GetComponent<DrivingPhysics>();
                         characters[child.gameObject] = child.gameObject.GetComponent<Character>(); 
-                        if(characters[child.gameObject] is Player)
-                        {
-                            player = child.gameObject; 
-                        }
-                        
                     }
                     else
                     {
@@ -59,7 +55,7 @@ namespace ChemKart
         void Update()
         {
             // Sort racers based on lap and waypoint
-            List<GameObject> sortedRacers = new List<GameObject>(racers); // Create a copy to sort
+            List<GameObject> sortedRacers = new List<GameObject>(m_Racers); // Create a copy to sort
 
             sortedRacers.Sort((racerA, racerB) =>
             {
@@ -79,7 +75,7 @@ namespace ChemKart
                 return waypointB.CompareTo(waypointA); // Descending order of waypoints
             });
 
-            placementText.text = (sortedRacers.IndexOf(player) + 1).ToString(); 
+            placementText.text = (sortedRacers.IndexOf(m_Player) + 1).ToString(); 
             totalRacersText.text = sortedRacers.Count.ToString();
 
             

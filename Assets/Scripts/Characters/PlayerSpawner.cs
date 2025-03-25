@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem; 
 using System.Collections.Generic;
 using TMPro;
 
@@ -10,32 +11,34 @@ namespace ChemKart
         [SerializeField]
         private GameObject m_RacersParent;
         [SerializeField]
-        private List<Transform> m_SpawnPoints;
-        [SerializeField]
         private GameObject m_PlayerPrefab;
         public List<PlayerData> joinedPlayers;
+        public Transform spawnPoints;
 
-        private void Awake()
+        public void SpawnPlayers()
         {
-            joinedPlayers = PlayerJoining.Instance.playersData;
-            SpawnPlayers();
-        }
+            joinedPlayers = PlayerJoining.playersData;
+            if(joinedPlayers == null)
+            {
+                joinedPlayers = new List<PlayerData>();
+                InputDevice defaultDevice = Gamepad.all.Count > 0 ? Gamepad.all[0] : Keyboard.current;
+                PlayerData data = new PlayerData(defaultDevice, null);
+                joinedPlayers.Add(data);
+            }
 
-        private void SpawnPlayers()
-        {
             for(int i = 0; i < joinedPlayers.Count; i++)
             {
-                if(i >= m_SpawnPoints.Count)
+                if(i >= spawnPoints.childCount)
                 {
                     Debug.LogWarning("Not enought spawn points for all players!");
                     break;
                 }
 
-                GameObject player = Instantiate(m_PlayerPrefab, m_SpawnPoints[i].position, m_SpawnPoints[i].rotation);
+                GameObject player = Instantiate(m_PlayerPrefab, spawnPoints.GetChild(i).position, spawnPoints.GetChild(i).rotation);
                 player.transform.SetParent(m_RacersParent.transform);
                 player.GetComponentInChildren<LapManager>().racers = m_RacersParent;
                 player.GetComponent<DrivingPhysics>().playerInput = joinedPlayers[i].m_InputDevice;
-                player.GetComponentInChildren<TMP_Text>().text = joinedPlayers[i].m_Name.text;
+                player.GetComponentInChildren<TMP_Text>().text = joinedPlayers[i].m_Name?.text;
 
                 CanvasScaler canvasScaler = player.GetComponentInChildren<CanvasScaler>();
                 Camera playerCam = player.GetComponentInChildren<Camera>();

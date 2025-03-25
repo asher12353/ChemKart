@@ -66,13 +66,13 @@ namespace ChemKart
         public Waypoint GetWaypoint() {return m_MostRecentWaypoint;}
         public void SetWaypoint(Waypoint waypoint) {m_MostRecentWaypoint = waypoint;}
 
-        void Start()
+        void Awake()
         {
             // grabs the needed components
             m_Sphere = transform.GetComponentInChildren<Rigidbody>().transform;
             rb = m_Sphere.GetComponent<Rigidbody>();
             m_Model = transform.GetChild(2); // this could be better updated to grab the right model but I'm unsure of a way to do so yet
-            m_MostRecentWaypoint = WaypointManager.m_Waypoints[0];
+            m_MostRecentWaypoint = WaypointGenerator.waypoints[0];
             random = new System.Random((int)seed);
         }
 

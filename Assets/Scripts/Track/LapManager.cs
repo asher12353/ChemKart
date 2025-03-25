@@ -16,7 +16,15 @@ namespace ChemKart
         
         void Start()
         {
-            m_LapWaypoint = GameObject.FindGameObjectWithTag("FinishLineWaypoint").GetComponent<Waypoint>();
+            GameObject lapWaypoint = GameObject.FindGameObjectWithTag("FinishLineWaypoint");
+            if(lapWaypoint is Waypoint)
+            {
+                m_LapWaypoint = lapWaypoint.GetComponent<Waypoint>();
+            }
+            else
+            {
+                m_LapWaypoint = lapWaypoint.AddComponent<Waypoint>();
+            }
             if(!m_LapWaypoint)
             {
                 Debug.LogError("The m_LapWaypoint is not found!");

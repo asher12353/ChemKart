@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 namespace ChemKart
 {
+
+    // DEPRECIATED: THIS CLASS IS NOT USED IN THE GAME AS OF 3/11/2025
     public class WaypointManager : MonoBehaviour
     {
         public GameObject tracks;
@@ -12,6 +14,7 @@ namespace ChemKart
         {
             // this could probably be made to be done in editor, instead of when starting to play, but I'm unsure of how to do in engine code
             GrabActiveAllWaypoints(tracks);
+            m_Waypoints[m_Waypoints.Count / 2].isRequiredWaypoint = true;
         }
 
         /// <summary>

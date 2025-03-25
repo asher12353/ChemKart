@@ -1,0 +1,61 @@
+ManifestFileVersion: 0
+UnityVersion: 6000.0.26f1
+CRC: 1999011918
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 1cf4e6e016a6b9c16117636472224fd3
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3fe253d4f20668c30cee9f698a898086
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 8c78b8d3b5d6fe378a181f808a987007
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7fb8e7e91aaf0174c8dfab4d61d15dba, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f964c49aa33f1d64daff69cf28b276ec, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c1857e529ca9cbc4687e8f47dd93f15a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a2fe9d12aac1d0a4d9c14eaa5f67b2e5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2aa08cd1300b88248b9de8ba8ed4cbc4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 96a859a31e85e63499f8e0dd23701fee, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: da7f08a2e1b277048b4d91ea66dba31a, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Prefabs/FullTracks/testtrack.prefab
+Dependencies: []

@@ -5,9 +5,9 @@ namespace ChemKart
 {
     public class TrackLoader : MonoBehaviour
     {
-        public void LoadTrack()
+        public static void LoadTrack()
         {
-            SceneManager.LoadScene("Test Track Asher"); // this'll be dynamic later
+            SceneManager.LoadScene("ModImportTest"); // this'll be dynamic later
         }
     }
 }
