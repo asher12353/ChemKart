@@ -94,8 +94,25 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: f54b6a8a2dbbf54fa94cf044a19cd202
     GuidInternal: 
-    m_lastTime: -8584576442327968500
+    m_lastTime: -8584576440826476348
     List:
+    - name: ItemPickup
+      guid: b9339fb4c7a52e4f9d2d797acb876c17
+      id: 1851462748
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: f54b6a8a2dbbf54fa94cf044a19cd202
+      - ElementName: ItemPickup
+        ObjectType: 3
+        guid: b9339fb4c7a52e4f9d2d797acb876c17
+      Path: Events\Default Work Unit\ItemPickup
+      maxAttenuation: 0
+      maxDuration: 0.39585033
+      minDuration: 0.38104308
     - name: PlayMusic
       guid: 12c03a6e1c9fd14dbfb5fdf4f46e67e9
       id: 417627684

@@ -1,6 +1,9 @@
 Event	ID	Name			Wwise Object Path	Notes
 	417627684	PlayMusic			\Default Work Unit\PlayMusic	
+	1851462748	ItemPickup			\Default Work Unit\ItemPickup	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	315529080	Item_Pickup2	Y:\Documents\GitHub\ChemKart\ChemKart_WwiseProject\.cache\73\{737B536C-DDFF-33D6-2E4B-E136007A98F8}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Item_Pickup\Item_Pickup2		67312
+	817272481	Item_Pickup1	Y:\Documents\GitHub\ChemKart\ChemKart_WwiseProject\.cache\36\{365BF6AD-ABE9-893F-EADA-BB49BAE28546}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Item_Pickup\Item_Pickup1		69924
 	934402404	ztmusic-heartbeat-acceleration-eurobeat-206094 [music only]	Y:\Documents\GitHub\ChemKart\ChemKart_WwiseProject\.cache\57\{5706832C-A89F-FA18-1C8C-42B1F939479B}.wem		\Interactive Music Hierarchy\Default Work Unit\Music1\ztmusic-heartbeat-acceleration-eurobeat-206094 [music only]		32958672
 

@@ -10,11 +10,27 @@
     "Type": "User",
     "GUID": "{7C579735-9D2D-4B26-B427-CBCED8FB1D83}",
     "Language": "SFX",
-    "Hash": "{8E8A6B62-4FB1-9543-1BB3-4430DB5BD575}",
+    "Hash": "{56467E20-6B7B-C75C-FA8C-44CA1B9F10BD}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\MainSounbank",
     "ShortName": "MainSounbank",
     "Path": "MainSounbank.bnk",
     "Media": [
+     {
+      "Id": "315529080",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Item_Pickup2.wav",
+      "CachePath": "73/{737B536C-DDFF-33D6-2E4B-E136007A98F8}.wem"
+     },
+     {
+      "Id": "817272481",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Item_Pickup1.wav",
+      "CachePath": "36/{365BF6AD-ABE9-893F-EADA-BB49BAE28546}.wem"
+     },
      {
       "Id": "934402404",
       "Language": "SFX",
@@ -25,6 +41,23 @@
      }
     ],
     "Events": [
+     {
+      "Id": "1851462748",
+      "Name": "ItemPickup",
+      "ObjectPath": "\\Events\\Default Work Unit\\ItemPickup",
+      "GUID": "{B49F33B9-A5C7-4F2E-9D2D-797ACB876C17}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.38104308",
+      "DurationMax": "0.39585033",
+      "MediaRefs": [
+       {
+        "Id": "315529080"
+       },
+       {
+        "Id": "817272481"
+       }
+      ]
+     },
      {
       "Id": "417627684",
       "Name": "PlayMusic",
@@ -42,6 +75,6 @@
     ]
    }
   ],
-  "FileHash": "{D5F30A65-340D-DAF3-5F59-891048F7F224}"
+  "FileHash": "{DE1EFCCE-DD3E-53FB-00EF-86DEC91C36AF}"
  }
 }
