@@ -70,3 +70,23 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Wwise cache and build output
+/WwiseProject/.cache/
+/WwiseProject/.migration/
+/WwiseProject/.sourcecontrol/
+/WwiseProject/.wwiseproject
+
+# Generated SoundBanks
+/Assets/StreamingAssets/Audio/GeneratedSoundBanks/
+
+# Unity auto-generated Wwise files (optional)
+/WwiseProject/GeneratedSoundBanks/
+/WwiseProject/.WwiseTemp/
+
+# You CAN include these files:
+/WwiseProject/YourProjectName.wproj
+/WwiseProject/*.wwu
+/WwiseProject/Actor-Mixer Hierarchy
+/WwiseProject/Events
+/WwiseProject/SoundBanks
