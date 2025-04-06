@@ -14,9 +14,9 @@ namespace ChemKart
 
         public override void Effect(GameObject vehicle)
         {
-            Transform sphere = vehicle.transform.GetChild(0).transform; 
+            Transform sphere = vehicle.GetComponentInChildren<Sphere>().transform; 
             Vector3 pos = sphere.position;
-            Vector3 spawnPosition = pos + vehicle.transform.GetChild(1).transform.forward * distanceAwayFromVehicle;
+            Vector3 spawnPosition = pos + vehicle.transform.GetComponentInChildren<MotorcycleModel>().transform.forward * distanceAwayFromVehicle;
             Bomb b = Instantiate(bomb, spawnPosition, Quaternion.identity);
             b.StartExplosion();
         }

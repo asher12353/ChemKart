@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 namespace ChemKart
 {
@@ -9,18 +10,17 @@ namespace ChemKart
         void Awake()
         {
             transform.localScale = Vector3.zero;
+            StartCoroutine(Explode());
         }
 
-        // Update is called once per frame
-        void Update()
+        private IEnumerator Explode()
         {
-            float val = explosionSpeed * Time.deltaTime;
-            transform.localScale += new Vector3(val, val, val);
-            // I'm just comparing x here since I can't compare two vector3s
-            if(transform.localScale.x >= explosionRadius)
+            while(transform.localScale.magnitude <= explosionRadius)
             {
-                Destroy(this.gameObject);
+                transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(explosionRadius, explosionRadius, explosionRadius), explosionSpeed * Time.deltaTime);
+                yield return null;
             }
+            Destroy(this.gameObject);
         }
 
         private void OnTriggerEnter(Collider other)

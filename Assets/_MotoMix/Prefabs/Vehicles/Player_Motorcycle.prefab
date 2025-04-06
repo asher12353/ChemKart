@@ -291,7 +291,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Owner: {fileID: 4963899484156641481}
   m_Items: []
-  m_AudioClipPlayer: {fileID: 0}
 --- !u!114 &3109914367095850161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1118,6 +1117,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5209fc2f5b1f60642841cb2d10b8320b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7749168613615116703}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5209fc2f5b1f60642841cb2d10b8320b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9092858158496718043}
   m_SourcePrefab: {fileID: 100100000, guid: 5209fc2f5b1f60642841cb2d10b8320b, type: 3}
 --- !u!1 &1640420752231252566 stripped
 GameObject:
@@ -1138,6 +1140,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   child: {fileID: 1071074105603959247}
   sphere: {fileID: 6981639727994810488}
+--- !u!114 &9092858158496718043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640420752231252566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4bc5cee439f73429d79497671bba35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2127987481484466412 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5209fc2f5b1f60642841cb2d10b8320b, type: 3}
