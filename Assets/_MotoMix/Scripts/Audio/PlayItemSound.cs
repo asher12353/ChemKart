@@ -23,9 +23,9 @@ namespace ChemKart
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Player"))
+            if (other.gameObject.CompareTag("Motorcycle"))
             {
-                AkUnitySoundEngine.PostEvent("ItemSound", gameObject);
+                AkUnitySoundEngine.PostEvent("ItemPickup", gameObject);
             }
         }
     }
