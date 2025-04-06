@@ -7,7 +7,7 @@ namespace ChemKart
     {
         public static void LoadTrack()
         {
-            SceneManager.LoadScene("ModImportTest"); // this'll be dynamic later
+            SceneManager.LoadScene("Main Track (modded)"); // this'll be dynamic later
         }
     }
 }
