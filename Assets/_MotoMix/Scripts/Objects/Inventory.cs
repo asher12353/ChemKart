@@ -6,17 +6,15 @@ namespace ChemKart
 {
     public class Inventory : MonoBehaviour
     {
-        public const int MaxItems = 3;
-        
         public event Action InventoryChanged;
+
+        public const int MaxItems = 3;
         
         [Header("Character")]
         [SerializeField] private Character m_Owner;
         
         [Header("Inventory")]
         [SerializeField] private List<Collectable> m_Items = new();
-        
-        [SerializeField] private AudioClipPlayer m_AudioClipPlayer;
         
         private void Awake()
         {
@@ -37,10 +35,7 @@ namespace ChemKart
             {
                 return false;
             }
-            if(m_AudioClipPlayer)
-            {
-                m_AudioClipPlayer.PlayClip();
-            }
+
             m_Items.Add(item);
             InventoryChanged?.Invoke();
 
@@ -73,6 +68,6 @@ namespace ChemKart
             return true;
         }
 
-        public List<Collectable> M_Items() { return m_Items; }
+        public List<Collectable> Items() { return m_Items; }
     }
 }

@@ -65,7 +65,7 @@ namespace ChemKart
         void CheckAllPossibleRecipes()
         {
             m_PossibleRecipes = new();
-            m_Items = m_PlayerInventory.M_Items();
+            m_Items = m_PlayerInventory.Items();
             // for each item
             for(int i = 0; i < m_Items.Count; i++)
             {

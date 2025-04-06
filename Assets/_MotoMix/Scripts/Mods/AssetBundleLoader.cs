@@ -41,19 +41,23 @@ namespace ChemKart
             // Instantiate the prefab in the scene
             GameObject track = Instantiate(prefab, Vector3.zero, Quaternion.identity);
 
+            // find the transforms of the different components
             m_WaypointGenerator.tracks = track.transform.Find("Tracks").gameObject;
             m_PickupGenerator.pickupTransforms = track.transform.Find("Pickups").gameObject;
             m_PortalGenerator.portalTransforms = track.transform.Find("Portals").gameObject;
             track.transform.Find("RespawnPlane").gameObject.AddComponent<RespawnPlane>();
             
+            // generate respective components
             m_WaypointGenerator.GenerateWaypoints();
             m_PickupGenerator.GeneratePickups();
             m_PortalGenerator.GeneratePortals();
 
+            // deal with the spawn points, then spawn the players in
             GameObject spawnPoints = Instantiate(m_SpawnPointPrefab, Vector3.zero, Quaternion.identity);
             m_PlayerSpawner.spawnPoints = spawnPoints.transform;
             m_PlayerSpawner.spawnPoints.SetParent(track.transform);
             m_PlayerSpawner.SpawnPlayers();
+            
             // Optionally, unload the bundle but keep the assets
             bundle.Unload(false);
         }

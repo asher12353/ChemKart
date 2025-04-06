@@ -16,7 +16,6 @@ namespace ChemKart
         {
             if(vehicle)
             {
-                Debug.Log("Shielding");
                 DrivingPhysics driver = vehicle.transform.GetComponent<DrivingPhysics>();
                 driver.shielded = true;
                 await UniTask.Delay(TimeSpan.FromSeconds(m_ShieldTimer));

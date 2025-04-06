@@ -18,7 +18,6 @@ namespace ChemKart
 
         private Dictionary<PortalColor, Color> colorDictionary; 
         
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             portalInfo = enterPortal.GetComponent<Portal>(); 
@@ -37,18 +36,12 @@ namespace ChemKart
             UpdateTriggerColor(); 
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            
-        }
-
         private void OnTriggerEnter(Collider other)
         {
             Inventory inventory = other.GetComponent<Inventory>();
             if (inventory != null)
             {
-                List<Collectable> items = inventory.M_Items();
+                List<Collectable> items = inventory.Items();
                 foreach (Collectable item in items)
                 {
                     if(item is Chemical)

@@ -29,9 +29,8 @@ namespace ChemKart
         private Dictionary<PortalColor, Color> colorDictionary;
 
         [SerializeField]
-        private Material material; // material of the portal
+        private Material material;
 
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             colorDictionary = new Dictionary<PortalColor, Color>
@@ -50,12 +49,6 @@ namespace ChemKart
                 material = renderer.material;
                 UpdateMaterialColor(); 
             } 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            
         }
 
         private void OnTriggerEnter(Collider other)

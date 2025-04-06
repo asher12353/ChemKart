@@ -19,7 +19,6 @@ namespace ChemKart
             }
             if(isRequiredWaypoint)
             {
-                Debug.Log("Passed a required waypoint");
                 driver.passedRequiredWaypoint = true;
             }
             driver.SetWaypoint(this);
