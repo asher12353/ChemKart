@@ -51,7 +51,7 @@ namespace ChemKart
             m_WaypointGenerator.GenerateWaypoints();
             m_PickupGenerator.GeneratePickups();
             m_PortalGenerator.GeneratePortals();
-
+            
             // deal with the spawn points, then spawn the players in
             GameObject spawnPoints = Instantiate(m_SpawnPointPrefab, Vector3.zero, Quaternion.identity);
             m_PlayerSpawner.spawnPoints = spawnPoints.transform;

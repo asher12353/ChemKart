@@ -482,7 +482,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9530f9cc3b01ca499b62b147f22f6b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Player: {fileID: 8544877664736114457}
   placementText: {fileID: 172707698420022626}
   totalRacersText: {fileID: 880726949689864940}
 --- !u!1 &7693776253821517090
@@ -1138,7 +1137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180e5b67d2ce76649843d2bbbffa34eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  child: {fileID: 1071074105603959247}
+  position: {fileID: 1071074105603959247}
   sphere: {fileID: 6981639727994810488}
 --- !u!114 &9092858158496718043
 MonoBehaviour:

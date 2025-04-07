@@ -95,6 +95,7 @@ namespace ChemKart
             {
                 Waypoint wp = waypoints[i];
                 wp.nextWaypoint = waypoints[i + 1];
+                wp.waypointIndex = i;
             }
 
             // Make it loop

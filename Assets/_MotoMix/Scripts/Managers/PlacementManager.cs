@@ -11,18 +11,18 @@ namespace ChemKart
     {
         private GameObject m_RacerObject;
         private List<GameObject> m_Racers;
-        [SerializeField]
         private GameObject m_Player; 
 
         // dictionary for each racer with their associated driving physics 
         private Dictionary<GameObject, DrivingPhysics> drivingPhysics;
         private Dictionary<GameObject, Character> characters;
 
-        public TextMeshProUGUI placementText; // text to update the placement 
-        public TextMeshProUGUI totalRacersText; // text to update total racers 
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        public TextMeshProUGUI placementText;
+        public TextMeshProUGUI totalRacersText;
+
         void Start()
         {
+            m_Player = transform.parent.gameObject;
             m_RacerObject = GameObject.Find("Racers"); 
             m_Racers = new List<GameObject>();
             drivingPhysics = new Dictionary<GameObject, DrivingPhysics>(); 
@@ -48,10 +48,8 @@ namespace ChemKart
             {
                 Debug.LogError("Racers not found"); 
             }
-            
         }
 
-        // Update is called once per frame
         void Update()
         {
             // Sort racers based on lap and waypoint
@@ -77,9 +75,6 @@ namespace ChemKart
 
             placementText.text = (sortedRacers.IndexOf(m_Player) + 1).ToString(); 
             totalRacersText.text = sortedRacers.Count.ToString();
-
-            
-            
         }
     }
 }
