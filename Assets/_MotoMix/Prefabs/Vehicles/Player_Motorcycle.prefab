@@ -673,6 +673,7 @@ GameObject:
   - component: {fileID: 6950750823685586026}
   - component: {fileID: 9153315787835088802}
   - component: {fileID: 4963899484156641481}
+  - component: {fileID: 314785662005688426}
   - component: {fileID: 6984200043404171731}
   - component: {fileID: 3138674474656165665}
   - component: {fileID: 1033010669559974218}
@@ -777,9 +778,9 @@ MonoBehaviour:
     m_ActionName: 'Player/Interact[/Keyboard/e]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9153315787835088802}
-        m_TargetAssemblyTypeName: ChemKart.ChemicalCrafter, Assembly-CSharp
-        m_MethodName: ItemEvent
+      - m_Target: {fileID: 314785662005688426}
+        m_TargetAssemblyTypeName: ChemKart.ItemManager, Assembly-CSharp
+        m_MethodName: ItemUsedEvent
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -908,7 +909,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197bdfb462c499e4f8a34512ba32a05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlayerHUD: {fileID: 3138674474656165665}
   m_PossibleRecipesHUD: {fileID: 1033010669559974218}
   m_Recipes:
   - {fileID: 8206639600198915904, guid: 61dc9119af2322e4ea0a58c6ce127660, type: 3}
@@ -929,6 +929,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lapNumber: 0
   m_PlayerHUD: {fileID: 6984200043404171731}
+--- !u!114 &314785662005688426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8544877664736114457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434fa3e9a031a9d41b47db4e0cc92e88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PlayerHUD: {fileID: 3138674474656165665}
 --- !u!114 &6984200043404171731
 MonoBehaviour:
   m_ObjectHideFlags: 0
