@@ -37,7 +37,7 @@ namespace ChemKart
                 GameObject player = Instantiate(m_PlayerPrefab, spawnPoints.GetChild(i).position, spawnPoints.GetChild(i).rotation);
                 player.transform.SetParent(m_RacersParent.transform);
                 player.GetComponentInChildren<LapManager>().racers = m_RacersParent;
-                player.GetComponent<DrivingPhysics>().playerInput = joinedPlayers[i].m_InputDevice;
+                //player.GetComponent<DrivingPhysics>().playerInput = joinedPlayers[i].m_InputDevice;
                 player.GetComponentInChildren<TMP_Text>().text = joinedPlayers[i].m_Name?.text;
 
                 CanvasScaler canvasScaler = player.GetComponentInChildren<CanvasScaler>();

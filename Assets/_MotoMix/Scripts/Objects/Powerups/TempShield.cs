@@ -16,10 +16,10 @@ namespace ChemKart
         {
             if(vehicle)
             {
-                DrivingPhysics driver = vehicle.transform.GetComponent<DrivingPhysics>();
-                driver.shielded = true;
+                KartDamageHandler driver = vehicle.transform.GetComponent<KartDamageHandler>();
+                driver.IsShielded = true;
                 await UniTask.Delay(TimeSpan.FromSeconds(m_ShieldTimer));
-                driver.shielded = false;
+                driver.IsShielded = false;
             }
         }
     }

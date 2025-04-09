@@ -83,14 +83,13 @@ namespace ChemKart
             if (target == null || connectedPortal == null)
                 return;
 
-            DrivingPhysics drivingPhysics = target.GetComponent<DrivingPhysics>();
-            Debug.Log(drivingPhysics); 
-            if (drivingPhysics != null)
+            KartDrivingController drivingController = target.GetComponent<KartDrivingController>();
+            if (drivingController != null)
             {
                 // store speed at the time the portal is entered 
-                float speed = drivingPhysics.currentSpeed; 
+                float speed = drivingController.GetComponent<KartController>().CurrentSpeed; 
                 // Stop movement
-                drivingPhysics.StopMovement();
+                drivingController.StopMovement();
 
                 // Reset Rigidbody physics (if any)
                 Rigidbody rb = target.GetComponentInChildren<Rigidbody>();
@@ -101,11 +100,11 @@ namespace ChemKart
                 }
 
                 // Teleport position
-                drivingPhysics.ResetPosition(connectedPortal.transform.position);
+                drivingController.ResetPosition(connectedPortal.transform.position);
 
                 // Adjust rotation
                 Quaternion portalRotation = connectedPortal.transform.rotation * Quaternion.Euler(0, -90, 0); // Optional adjustment
-                drivingPhysics.ResetRotation(portalRotation);
+                drivingController.ResetRotation(portalRotation);
 
                 // give back current speed 
                 rb.linearVelocity = portalRotation * Vector3.forward * speed;

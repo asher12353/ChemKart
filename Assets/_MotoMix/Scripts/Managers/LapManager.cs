@@ -49,20 +49,21 @@ namespace ChemKart
             }
             m_PlayerLapText.text = "1";
         }
+
         void WaypointCrossed(Collider other)
         {
-            DrivingPhysics driver = other.transform.parent.GetComponent<DrivingPhysics>();
+            KartController driver = other.transform.parent.GetComponent<KartController>();
             if(!driver)
             {
                 Debug.LogWarning("Couldn't get the driving physics component when crossing the line");
                 return;
             }
-            if(!driver.passedRequiredWaypoint)
+            if(!driver.PassedRequiredWaypoint)
             {
                 Debug.Log("Player trying to pass finish line without going through a required checkpoint");
                 return;
             }
-            driver.passedRequiredWaypoint = false;
+            driver.PassedRequiredWaypoint = false;
             Character character = other.transform.parent.GetComponent<Character>();
             if(!character)
             {
@@ -75,7 +76,7 @@ namespace ChemKart
                 m_GameOverText.gameObject.SetActive(true);
                 foreach(Transform racer in racers.transform)
                 {
-                    racer.GetComponent<DrivingPhysics>().enabled = false;
+                    racer.GetComponent<KartController>().enabled = false;
                 }
                 return;
             }

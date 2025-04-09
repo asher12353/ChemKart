@@ -13,8 +13,7 @@ namespace ChemKart
 
         public override void Effect(GameObject vehicle)
         {
-            DrivingPhysics driver = vehicle.GetComponent<DrivingPhysics>();
-            driver.currentSpeed = driver.accelerationSpeed * boostMagnitude;
+            vehicle.GetComponent<KartDrivingController>().Boost(boostMagnitude);
         }
     }
 }

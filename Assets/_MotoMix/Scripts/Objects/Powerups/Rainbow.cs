@@ -17,10 +17,10 @@ namespace ChemKart
 
         private async Task RainbowEffect(GameObject vehicle)
         {
-            DrivingPhysics physics = vehicle.GetComponent<DrivingPhysics>();
+            KartDamageHandler damageController = vehicle.GetComponent<KartDamageHandler>();
             Renderer[] renderers = vehicle.GetComponentsInChildren<Renderer>();
 
-            if (physics != null && renderers.Length > 0)
+            if (damageController != null && renderers.Length > 0)
             {
                 // Store the original colors
                 Color[] originalColors = new Color[renderers.Length];
@@ -33,9 +33,9 @@ namespace ChemKart
                 }
 
                 // Enable power-up effects
-                physics.shielded = true;
-                physics.canAttack = true;
-                physics.accelerationSpeed *= 2;
+                damageController.IsShielded = true;
+                damageController.CanDamage = true;
+                damageController.GetComponent<KartDrivingController>().accelerationSpeed *= 2;
 
                 // Flash rainbow colors for 5 seconds
                 float elapsedTime = 0f;
@@ -63,9 +63,9 @@ namespace ChemKart
                 }
 
                 // Reset power-up effects
-                physics.shielded = false;
-                physics.canAttack = false;
-                physics.accelerationSpeed /= 2;
+                damageController.IsShielded = false;
+                damageController.CanDamage = false;
+                damageController.GetComponent<KartDrivingController>().accelerationSpeed /= 2;
             }
         }
     }

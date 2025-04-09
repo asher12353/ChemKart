@@ -14,7 +14,7 @@ namespace ChemKart
         private GameObject m_Player; 
 
         // dictionary for each racer with their associated driving physics 
-        private Dictionary<GameObject, DrivingPhysics> drivingPhysics;
+        private Dictionary<GameObject, KartController> drivingPhysics;
         private Dictionary<GameObject, Character> characters;
 
         public TextMeshProUGUI placementText;
@@ -25,7 +25,7 @@ namespace ChemKart
             m_Player = transform.parent.gameObject;
             m_RacerObject = GameObject.Find("Racers"); 
             m_Racers = new List<GameObject>();
-            drivingPhysics = new Dictionary<GameObject, DrivingPhysics>(); 
+            drivingPhysics = new Dictionary<GameObject, KartController>(); 
             characters = new Dictionary<GameObject, Character>();
             if( m_RacerObject != null ) 
             {
@@ -35,7 +35,7 @@ namespace ChemKart
                     if(child.gameObject != null)
                     {
                         m_Racers.Add(child.gameObject);
-                        drivingPhysics[child.gameObject] = child.gameObject.GetComponent<DrivingPhysics>();
+                        drivingPhysics[child.gameObject] = child.gameObject.GetComponent<KartController>();
                         characters[child.gameObject] = child.gameObject.GetComponent<Character>(); 
                     }
                     else
@@ -67,8 +67,8 @@ namespace ChemKart
                 }
 
                 // If laps are the same, compare waypoints
-                int waypointA = drivingPhysics[racerA].GetWaypoint().waypointIndex;
-                int waypointB = drivingPhysics[racerB].GetWaypoint().waypointIndex;
+                int waypointA = drivingPhysics[racerA].CurrentWaypoint.waypointIndex;
+                int waypointB = drivingPhysics[racerB].CurrentWaypoint.waypointIndex;
 
                 return waypointB.CompareTo(waypointA); // Descending order of waypoints
             });

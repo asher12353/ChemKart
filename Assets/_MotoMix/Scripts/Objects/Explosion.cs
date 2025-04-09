@@ -25,10 +25,10 @@ namespace ChemKart
 
         private void OnTriggerEnter(Collider other)
         {
-            DrivingPhysics driver = other.transform.parent.transform.GetComponent<DrivingPhysics>();
+            KartDamageHandler driver = other.transform.parent.transform.GetComponent<KartDamageHandler>();
             if(driver)
             {
-                driver.Damage();
+                driver.ApplyDamage();
             }
         }
     }
