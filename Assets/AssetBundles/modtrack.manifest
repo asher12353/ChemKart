@@ -1,0 +1,39 @@
+ManifestFileVersion: 0
+UnityVersion: 6000.0.26f1
+CRC: 878588091
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e207651da5d3fabdf9bd4bedd7a53166
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: cdf1179028c2b7033740342c6030feff
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: fbb32c66120f8a7a33a4280f85de904a
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/_MotoMix/Prefabs/FullTracks/modtrack.prefab
+Dependencies: []

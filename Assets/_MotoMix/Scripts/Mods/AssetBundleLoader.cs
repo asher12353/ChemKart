@@ -46,6 +46,8 @@ namespace ChemKart
             m_PickupGenerator.pickupTransforms = track.transform.Find("Pickups").gameObject;
             m_PortalGenerator.portalTransforms = track.transform.Find("Portals").gameObject;
             track.transform.Find("RespawnPlane").gameObject.AddComponent<RespawnPlane>();
+
+            SetLayerRecursively(track.transform.Find("RespawnPlane").gameObject, LayerMask.NameToLayer("Ignore Raycast"));
             
             // generate respective components
             m_WaypointGenerator.GenerateWaypoints();
@@ -60,6 +62,16 @@ namespace ChemKart
             
             // Optionally, unload the bundle but keep the assets
             bundle.Unload(false);
+        }
+
+        void SetLayerRecursively(GameObject obj, int newLayer)
+        {
+            obj.layer = newLayer;
+
+            foreach (Transform child in obj.transform)
+            {
+                SetLayerRecursively(child.gameObject, newLayer);
+            }
         }
     }
 }
