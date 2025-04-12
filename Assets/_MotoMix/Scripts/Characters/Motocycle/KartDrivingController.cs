@@ -26,7 +26,6 @@ namespace ChemKart
         private void Update()
         {
             Vector2 input = controller.InputHandler.MoveInput;
-            Debug.Log(input);
 
             if (!controller.DamageHandler.IsDamaged)
                 speed = input.y * accelerationSpeed;

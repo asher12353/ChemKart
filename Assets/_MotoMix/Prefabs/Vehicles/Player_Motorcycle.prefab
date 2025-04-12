@@ -1010,7 +1010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   accelerationSpeed: 45
-  rotationSpeed: 60
+  rotationSpeed: 30
   driftFactor: 0.4
 --- !u!114 &5730837674269572093
 MonoBehaviour:
