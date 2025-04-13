@@ -12,17 +12,16 @@ namespace ChemKart
         
         public void OnTriggerEnter(Collider other)
         {
-            DrivingPhysics driver = other.transform.parent.GetComponent<DrivingPhysics>();
+            KartController driver = other.transform.parent.GetComponent<KartController>();
             if(!driver)
             {
                 return;
             }
             if(isRequiredWaypoint)
             {
-                Debug.Log("Passed a required waypoint");
-                driver.passedRequiredWaypoint = true;
+                driver.PassedRequiredWaypoint = true;
             }
-            driver.SetWaypoint(this);
+            driver.CurrentWaypoint = this;
             OnTriggerEnterEvent?.Invoke(other);
         }
     }

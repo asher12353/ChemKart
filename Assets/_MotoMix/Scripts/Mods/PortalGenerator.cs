@@ -18,24 +18,29 @@ namespace ChemKart
             List<GameObject> portals = new List<GameObject>();
             foreach(Transform child in portalTransforms.transform)
             {
+                // grab the positions of the portal
                 GameObject portal = Instantiate(portalPrefab, child.position, child.rotation);
                 Transform enterPortal = child.GetChild(0).GetChild(0);
                 Transform exitPortal = child.GetChild(0).GetChild(1);
                 Transform trigger = child.GetChild(1);
 
+                // make the entrance to the portal
                 Vector3 enterPortalVector = enterPortal.position + new Vector3(0, 0.5f, 0);
                 portal.transform.GetChild(0).GetChild(0).transform.position = enterPortalVector;
                 portal.transform.GetChild(0).GetChild(0).transform.rotation = enterPortal.rotation * Quaternion.Euler(0, 90f, 0);
 
+                // make the exit to the portal
                 Vector3 exitPortalVector = exitPortal.position + new Vector3(0, 0.5f, 0);
                 portal.transform.GetChild(0).GetChild(1).transform.position = exitPortalVector;
                 portal.transform.GetChild(0).GetChild(1).transform.rotation = exitPortal.rotation * Quaternion.Euler(0, 90f, 0);
 
+                // make the trigger
                 portal.transform.GetChild(1).transform.position = enterPortal.position;
                 portal.transform.GetChild(1).transform.rotation = enterPortal.rotation;
 
                 Portal portalComponent = portal.GetComponent<Portal>();
 
+                // set the portal color based on the name
                 if(portal.transform.GetChild(0).name == "R")
                 {
                     portalComponent.color = Portal.PortalColor.R;

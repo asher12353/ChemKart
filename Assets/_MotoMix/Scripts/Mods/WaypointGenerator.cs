@@ -13,11 +13,6 @@ namespace ChemKart
 
         public static List<Waypoint> waypoints = new();
 
-        void Start()
-        {
-            //GenerateWaypoints();
-        }
-
         public void GenerateWaypoints()
         {
             if (tracks == null)
@@ -39,6 +34,7 @@ namespace ChemKart
                 int numWaypoints = vertices.Length / waypointSpacing;
                 Vector3 leftEdge = worldVertex, rightEdge = worldVertex, backEdge = worldVertex, forwardEdge = worldVertex, upEdge = worldVertex, downEdge = worldVertex;
 
+                // go throughs each vertex, grabs the left, right, forward, and backwards most vertexes to know the full dimensions of the model
                 for (int i = 0; i < vertices.Length; i++)
                 {
                     worldVertex = trackPiece.TransformPoint(vertices[i]); // Convert to world space
@@ -70,6 +66,7 @@ namespace ChemKart
                 }
                 backEdge.x = leftEdge.x + rightEdge.x / 2;
                 forwardEdge.x = leftEdge.x + rightEdge.x / 2;
+                // now that we know the dimensions of the track piece, make waypoints progressing along the track piece
                 for(int i = 0; i < numWaypoints; i++)
                 {
                     float t = (float)i / (numWaypoints - 1);
@@ -98,6 +95,7 @@ namespace ChemKart
             {
                 Waypoint wp = waypoints[i];
                 wp.nextWaypoint = waypoints[i + 1];
+                wp.waypointIndex = i;
             }
 
             // Make it loop

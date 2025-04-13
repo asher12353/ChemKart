@@ -4,25 +4,29 @@ namespace ChemKart
 {
     public class Sphere : MonoBehaviour
     {
-        DrivingPhysics physics; 
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        private KartController controller;
+
+        private void Start()
         {
-            physics = GetComponentInParent<DrivingPhysics>(); 
+            controller = GetComponentInParent<KartController>();
         }
 
         private void OnCollisionEnter(Collision collision)
         {
-            if(collision.gameObject.tag == "Motorcycle")
+            if (collision.gameObject.CompareTag("Motorcycle")) // if it's a motorcycle we hit
             {
-                if(physics != null) 
+                if (controller != null && !controller.DamageHandler.CanDamage)
                 {
-                    if(physics.canAttack)
+                    KartDamageHandler otherController = collision.gameObject.GetComponentInParent<KartDamageHandler>();
+                    if (otherController != null && otherController != controller)
                     {
-                        DrivingPhysics driver = collision.gameObject.GetComponentInParent<DrivingPhysics>();
-                        if(driver)
+                        if (!otherController.IsDamaged && !otherController.IsShielded)
                         {
-                            driver.Damage(); 
+                            otherController.ApplyDamage();
+                        }
+                        else if (otherController.IsShielded)
+                        {
+                            otherController.IsShielded = false;
                         }
                     }
                 }

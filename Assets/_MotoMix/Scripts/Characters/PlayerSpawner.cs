@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.InputSystem; 
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Users;
 using System.Collections.Generic;
 using TMPro;
 
@@ -34,14 +35,24 @@ namespace ChemKart
                     break;
                 }
 
-                GameObject player = Instantiate(m_PlayerPrefab, spawnPoints.GetChild(i).position, spawnPoints.GetChild(i).rotation);
-                player.transform.SetParent(m_RacersParent.transform);
-                player.GetComponentInChildren<LapManager>().racers = m_RacersParent;
-                player.GetComponent<DrivingPhysics>().playerInput = joinedPlayers[i].m_InputDevice;
-                player.GetComponentInChildren<TMP_Text>().text = joinedPlayers[i].m_Name?.text;
+                InputDevice device = joinedPlayers[i].m_InputDevice;
 
-                CanvasScaler canvasScaler = player.GetComponentInChildren<CanvasScaler>();
-                Camera playerCam = player.GetComponentInChildren<Camera>();
+                PlayerInput playerInput = PlayerInput.Instantiate(
+                    m_PlayerPrefab, // Your prefab with PlayerInput component
+                    controlScheme: null, // or the name of the scheme you want (e.g., "Gamepad", "Keyboard&Mouse")
+                    pairWithDevice: device
+                );
+
+                playerInput.transform.position = spawnPoints.GetChild(i).position;
+                playerInput.transform.rotation = spawnPoints.GetChild(i).rotation;
+                playerInput.transform.SetParent(m_RacersParent.transform);
+
+                playerInput.GetComponentInChildren<LapManager>().racers = m_RacersParent;
+                //player.GetComponent<DrivingPhysics>().playerInput = joinedPlayers[i].m_InputDevice;
+                playerInput.GetComponentInChildren<TMP_Text>().text = joinedPlayers[i].m_Name?.text;
+
+                CanvasScaler canvasScaler = playerInput.GetComponentInChildren<CanvasScaler>();
+                Camera playerCam = playerInput.GetComponentInChildren<Camera>();
 
                 if (canvasScaler != null && playerCam != null)
                 {

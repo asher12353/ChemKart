@@ -5,48 +5,17 @@ namespace ChemKart
 {
     public class ChemicalCrafter : MonoBehaviour
     {
-        [SerializeField] private PlayerHUD m_PlayerHUD;
         [SerializeField] private PlayerHUD m_PossibleRecipesHUD;
         [SerializeField] private Powerup[] m_Recipes;
         private List<Powerup> m_PossibleRecipes = new();
         private Powerup m_PowerupToBeCrafted;
         private Inventory m_PlayerInventory;
-
         private List<Collectable> m_Items;
-        private Powerup m_Powerup1;
-        private Powerup m_Powerup2;
-
 
         void Start()
         {
             m_PlayerInventory = transform.GetComponentInChildren<Inventory>();
             m_PlayerInventory.InventoryChanged += CheckAllPossibleRecipes;
-        }
-
-        public void ItemEvent(InputAction.CallbackContext context)
-        {
-            if(context.performed)
-            {
-                float keyValue = context.ReadValue<float>();
-                if(m_Powerup1 && keyValue == -1f)
-                {
-                    m_Powerup1.Effect(this.gameObject);
-                    m_Powerup1 = null;
-                    if(m_PlayerHUD)
-                    {
-                        m_PlayerHUD.RemoveItemAtIndexWithoutShifting(0);
-                    }
-                }
-                if(m_Powerup2 && keyValue == 1f)
-                {
-                    m_Powerup2.Effect(this.gameObject);
-                    m_Powerup2 = null;
-                    if(m_PlayerHUD)
-                    {
-                        m_PlayerHUD.RemoveItemAtIndexWithoutShifting(1);
-                    }
-                }
-            }
         }
 
         public void CraftEvent(InputAction.CallbackContext context)
@@ -65,7 +34,7 @@ namespace ChemKart
         void CheckAllPossibleRecipes()
         {
             m_PossibleRecipes = new();
-            m_Items = m_PlayerInventory.M_Items();
+            m_Items = m_PlayerInventory.Items();
             // for each item
             for(int i = 0; i < m_Items.Count; i++)
             {
@@ -142,23 +111,7 @@ namespace ChemKart
             {
                 item3 = (Chemical)m_Items[k];
             }
-            if(m_Powerup1 == null)
-            {
-                m_Powerup1 = powerup;
-                if(m_PlayerHUD)
-                {
-                    m_PlayerHUD.AddItemAtIndex(0, powerup.powerupSprite);
-                }
-            }
-            else if(m_Powerup2 == null)
-            {
-                m_Powerup2 = powerup;
-                if(m_PlayerHUD)
-                {
-                    m_PlayerHUD.AddItemAtIndex(1, powerup.powerupSprite);
-                }
-            }
-            else
+            if(!GetComponent<ItemManager>().AddPowerup(powerup))
             {
                 return;
             }

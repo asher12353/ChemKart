@@ -6,8 +6,7 @@ namespace ChemKart
     {
         void OnCollisionEnter(Collision other)
         {
-            Debug.Log("Respawning a driver");
-            DrivingPhysics driver = other.transform.parent.GetComponent<DrivingPhysics>();
+            KartDamageHandler driver = other.transform.parent.GetComponent<KartDamageHandler>();
             driver.Respawn();
         }
     }
