@@ -35,7 +35,7 @@ namespace ChemKart
                 // Enable power-up effects
                 damageController.IsShielded = true;
                 damageController.CanDamage = true;
-                damageController.GetComponent<KartDrivingController>().accelerationSpeed *= 2;
+                damageController.GetComponent<KartDrivingController>().accelerationRate *= 2;
 
                 // Flash rainbow colors for 5 seconds
                 float elapsedTime = 0f;
@@ -65,7 +65,7 @@ namespace ChemKart
                 // Reset power-up effects
                 damageController.IsShielded = false;
                 damageController.CanDamage = false;
-                damageController.GetComponent<KartDrivingController>().accelerationSpeed /= 2;
+                damageController.GetComponent<KartDrivingController>().accelerationRate /= 2;
             }
         }
     }
