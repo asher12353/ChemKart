@@ -87,6 +87,7 @@ namespace ChemKart
             
             LinkWaypoints();
             waypoints[waypoints.Count / 2].isRequiredWaypoint = true;
+            waypoints[0].gameObject.tag = "FinishLineWaypoint";
         }
 
         void LinkWaypoints()
