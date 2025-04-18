@@ -5620,6 +5620,8 @@ GameObject:
   - component: {fileID: 1703952874}
   - component: {fileID: 1703952873}
   - component: {fileID: 1703952872}
+  - component: {fileID: 1703952876}
+  - component: {fileID: 1703952875}
   m_Layer: 5
   m_Name: Start Button
   m_TagString: Untagged
@@ -5691,22 +5693,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2050133972}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 747947279}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1703952875}
+        m_TargetAssemblyTypeName: ChemKart.PlayerSelectStart, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5753,6 +5743,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703952870}
   m_CullTransparentMesh: 1
+--- !u!114 &1703952875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703952870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8fe5a8b1365fda4a8097fb525c05732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSelectMenu: {fileID: 2050133972}
+  trackSelectMenu: {fileID: 747947279}
+--- !u!114 &1703952876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703952870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee29a2c3af471543a6a9b0f9a4c5382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1718882493
 GameObject:
   m_ObjectHideFlags: 0
@@ -6567,6 +6583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Names: {fileID: 918536963}
+  startButton: {fileID: 1703952872}
 --- !u!1 &2079937366
 GameObject:
   m_ObjectHideFlags: 0
