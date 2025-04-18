@@ -9,7 +9,9 @@ namespace ChemKart
     {
         private KartController controller;
 
-        public float accelerationSpeed = 1.0f;
+        public float accelerationRate = 1.0f;
+        public float decelerationRate = 1.0f;
+        public bool canDrive;
         [SerializeField] private float rotationSpeed = 1.0f;
         [SerializeField] private float driftFactor = 0.8f;
         private float speed;
@@ -21,14 +23,15 @@ namespace ChemKart
         private void Start()
         {
             controller = GetComponent<KartController>();
+            CountdownManager.onCountdownFinished += OnCountdownFinished;
         }
 
         private void Update()
         {
             Vector2 input = controller.InputHandler.MoveInput;
 
-            if (!controller.DamageHandler.IsDamaged)
-                speed = input.y * accelerationSpeed;
+            if (!controller.DamageHandler.IsDamaged && canDrive)
+                speed = input.y * accelerationRate;
             else
                 speed = 0;
 
@@ -40,7 +43,8 @@ namespace ChemKart
                 rotation = rotationSpeed * controller.InputHandler.DriftDirection * control * driftFactor;
             }
 
-            controller.CurrentSpeed = Mathf.SmoothStep(controller.CurrentSpeed, speed, Time.deltaTime * 12f);
+            controller.CurrentSpeed = Mathf.MoveTowards(controller.CurrentSpeed, speed, Time.deltaTime * (speed > controller.CurrentSpeed ? accelerationRate : decelerationRate));
+
             currentRotation = Mathf.Lerp(currentRotation, rotation, Time.deltaTime * 4f);
 
             RotateWheels();
@@ -81,7 +85,7 @@ namespace ChemKart
 
         public void Boost(float factor)
         {
-            controller.CurrentSpeed = accelerationSpeed * factor;
+            controller.CurrentSpeed = accelerationRate * factor;
         }
 
         public void StopMovement()
@@ -114,6 +118,11 @@ namespace ChemKart
                 controller.Rigidbody.angularVelocity = Vector3.zero;
 
             controller.Model.rotation = newRotation;
+        }
+
+        private void OnCountdownFinished()
+        {
+            canDrive = true;
         }
     }
 }

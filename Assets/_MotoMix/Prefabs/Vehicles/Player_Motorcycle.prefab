@@ -1009,7 +1009,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c714f244ae66aef4188b1e219e7c27d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationSpeed: 45
+  accelerationRate: 50
+  decelerationRate: 30
   rotationSpeed: 30
   driftFactor: 0.4
 --- !u!114 &5730837674269572093

@@ -5,7 +5,7 @@ using TMPro;
 
 namespace ChemKart
 {
-    public class PlayerData : MonoBehaviour
+    public class PlayerData
     {
         public TMP_InputField m_Name;
         public InputDevice m_InputDevice;
