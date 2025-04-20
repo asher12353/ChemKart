@@ -14,6 +14,7 @@ namespace ChemKart
         public bool canDrive;
         [SerializeField] private float rotationSpeed = 1.0f;
         [SerializeField] private float driftFactor = 0.8f;
+        [SerializeField] private float weight = 1.0f;
         private float speed;
         private float rotation;
         private float currentRotation;
@@ -54,7 +55,7 @@ namespace ChemKart
         private void FixedUpdate()
         {
             controller.Rigidbody.AddForce(controller.Model.forward * controller.CurrentSpeed, ForceMode.Acceleration);
-            controller.Rigidbody.AddForce(Vector3.down * 9.8f);
+            controller.Rigidbody.AddForce(Vector3.down * 9.8f * weight);
             controller.Model.transform.eulerAngles = Vector3.Lerp(
                 controller.Model.transform.eulerAngles,
                 new Vector3(0, controller.Model.transform.eulerAngles.y + currentRotation, 0),
