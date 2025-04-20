@@ -1014,6 +1014,7 @@ MonoBehaviour:
   canDrive: 0
   rotationSpeed: 30
   driftFactor: 0.4
+  weight: 16
 --- !u!114 &5730837674269572093
 MonoBehaviour:
   m_ObjectHideFlags: 0
