@@ -79,9 +79,9 @@ namespace ChemKart
         private void RotateWheels()
         {
             if (controller.FrontWheel != null)
-                controller.FrontWheel.Rotate(Vector3.right * controller.CurrentSpeed * Time.deltaTime * 360f);
+                controller.FrontWheel.Rotate(Vector3.forward * controller.CurrentSpeed * Time.deltaTime * 360f);
             if (controller.RearWheel != null)
-                controller.RearWheel.Rotate(Vector3.right * controller.CurrentSpeed * Time.deltaTime * 360f);
+                controller.RearWheel.Rotate(Vector3.forward * controller.CurrentSpeed * Time.deltaTime * 360f);
         }
 
         public void Boost(float factor)
