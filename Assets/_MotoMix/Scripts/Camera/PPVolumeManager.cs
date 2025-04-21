@@ -17,8 +17,7 @@ namespace ChemKart
 
         private ChromaticAberration chromaticAberration;
         private LensDistortion lensDistortion;
-        private Bloom bloom;
-
+        
         void Start()
         {
             if (volume && volume.profile)
@@ -26,7 +25,6 @@ namespace ChemKart
                 volume.profile = Instantiate(volume.profile);
                 volume.profile.TryGet<ChromaticAberration>(out chromaticAberration);
                 volume.profile.TryGet<LensDistortion>(out lensDistortion);
-                volume.profile.TryGet<Bloom>(out bloom);
 
                 int assignedLayer = LayerMask.NameToLayer("Player" + layerIndex++);
 
@@ -41,16 +39,13 @@ namespace ChemKart
 
         void Update()
         {
-            float speed = controller.CurrentSpeed;
+            float speed = controller.Rigidbody.linearVelocity.magnitude;
 
             // Chromatic aberration: increase with speed
-            chromaticAberration.intensity.value = Mathf.Clamp01(speed / 50f);
+            chromaticAberration.intensity.value = Mathf.Clamp01(speed / controller.DrivingController.accelerationRate);
 
             // Lens distortion: stretch the screen subtly
-            lensDistortion.intensity.value = Mathf.Lerp(-10, -40, speed / 50f);
-
-            // Bloom: boost glow at high speeds
-            bloom.intensity.value = Mathf.Lerp(3f, 10f, speed / 50f);
+            lensDistortion.intensity.value = Mathf.Lerp(-0.1f, -0.65f, speed / controller.DrivingController.accelerationRate );
         }
     }
 }
