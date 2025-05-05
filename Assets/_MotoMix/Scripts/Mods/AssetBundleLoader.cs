@@ -47,7 +47,7 @@ namespace ChemKart
             m_PortalGenerator.portalTransforms = track.transform.Find("Portals").gameObject;
             track.transform.Find("RespawnPlane").gameObject.AddComponent<RespawnPlane>();
 
-            SetLayerRecursively(track.transform.Find("RespawnPlane").gameObject, LayerMask.NameToLayer("Ignore Raycast"));
+            SetLayerRecursively(track.transform.Find("Tracks").gameObject, LayerMask.NameToLayer("Track"));
             
             // generate respective components
             m_WaypointGenerator.GenerateWaypoints();

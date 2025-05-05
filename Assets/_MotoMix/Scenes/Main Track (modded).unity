@@ -454,8 +454,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 0
   m_MaxPlayerCount: -1
-  m_AllowJoining: 1
-  m_JoinBehavior: 0
+  m_AllowJoining: 0
+  m_JoinBehavior: 2
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -498,7 +498,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RacersParent: {fileID: 1799602445}
   m_PlayerPrefab: {fileID: 8544877664736114457, guid: b1bd6a4b74df0ed4dacf5f058769c6a4, type: 3}
-  joinedPlayers: []
   spawnPoints: {fileID: 0}
 --- !u!4 &1255388108
 Transform:
@@ -594,7 +593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tracks: {fileID: 0}
   waypointPrefab: {fileID: 4244872152985828850, guid: ecd7301f0506ef24783628a04a568aee, type: 3}
-  waypointSpacing: 5
+  waypointSpacing: 20
 --- !u!4 &1367817364
 Transform:
   m_ObjectHideFlags: 0
