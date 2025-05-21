@@ -1,2 +1,12 @@
 fileFormatVersion: 2
 guid: c714f244ae66aef4188b1e219e7c27d1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - bikeNrider: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

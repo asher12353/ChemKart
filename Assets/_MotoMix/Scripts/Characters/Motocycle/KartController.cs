@@ -27,6 +27,7 @@ namespace ChemKart
         public KartInputHandler InputHandler { get; private set; }
         public KartDrivingController DrivingController { get; private set; }
         public KartDamageHandler DamageHandler { get; private set; }
+        public ModelBehavior Behavior { get; private set; }
 
         private void Awake()
         {
@@ -38,6 +39,7 @@ namespace ChemKart
             InputHandler = gameObject.GetComponent<KartInputHandler>();
             DrivingController = gameObject.GetComponent<KartDrivingController>();
             DamageHandler = gameObject.GetComponent<KartDamageHandler>();
+            Behavior = gameObject.GetComponent<ModelBehavior>();
         }
     }
 }
